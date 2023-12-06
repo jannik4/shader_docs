@@ -112,6 +112,10 @@
             overflow-x: auto;
         }
 
+        .code-block::-webkit-scrollbar {
+            width: 8px;
+        }
+
         .item-list {
             list-style-type: none;
             padding: 0;
@@ -141,7 +145,7 @@
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 16px;
         }
 
         ::-webkit-scrollbar-track {
@@ -184,7 +188,7 @@
 
             
 <pre class="code-block"><code>fn pbr_input_from_vertex_output(in: <a class="struct"
-    href="../../bevy_pbr/forward_io/struct.VertexOutput.html">VertexOutput</a>, is_front: bool, double_sided: bool) -> <a class="struct"
+    href="../../bevy_pbr/prepass_io/struct.VertexOutput.html">VertexOutput</a>, is_front: bool, double_sided: bool) -> <a class="struct"
     href="../../bevy_pbr/pbr_types/struct.PbrInput.html">PbrInput</a></code>
 </pre>
 
