@@ -1,0 +1,13 @@
+[package]
+name = "make"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+docs = { path = "../docs" }
+compiler = { path = "../compiler", features = [
+    "backend_v0_11",
+    "backend_v0_10",
+    "backend_v0_08",
+] }
+generator = { path = "../generator" }
