@@ -1,0 +1,543 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        
+        bevy
+        
+    </title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #3b3b3b;
+            color: #fff;
+
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 16px 0 8px 0;
+        }
+
+        .nav {
+            padding: 8px 16px;
+            background-color: #2e2e2e;
+            border-bottom: 1px solid #555;
+        }
+
+        .content {
+            padding: 16px 16px;
+            max-width: 960px;
+        }
+
+        .select {
+            background-color: #4b4b4b;
+            color: #fff;
+        }
+
+        #selectVersion {
+            min-width: 65px;
+        }
+
+        #search {
+            width: 100%;
+            font-size: 1rem;
+            padding: 6px;
+            margin-bottom: 8px;
+            background-color: #d5d5d5;
+            border: 1px solid #aaa;
+        }
+
+        #search:focus {
+            outline: solid 1px #aaa;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .path {
+            color: #dcdcdc
+        }
+
+        .module {
+            color: #d2991d;
+        }
+
+        .const {
+            color: #d2991d;
+        }
+
+        .var {
+            color: #d2991d;
+        }
+
+        .struct {
+            color: #2dbfb8;
+        }
+
+        .fn {
+            color: #2bab09;
+        }
+
+        .def {
+            color: #09bd00;
+        }
+
+        .code-block {
+            background-color: #2b2b2b;
+            padding: 16px 12px;
+            overflow-x: auto;
+        }
+
+        .item-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .item-list-title {
+            margin: 32px 0 16px 0;
+            border-bottom: 1px solid #999;
+            padding-bottom: 8px;
+        }
+
+        .item-list-bordered>li {
+            border-bottom: 1px solid #666;
+            padding: 3px 0;
+        }
+
+        .item-list-bordered>li:last-child {
+            border-bottom: none;
+        }
+
+        .item-list-bordered>li:hover {
+            background-color: #666;
+        }
+
+        .item-list-bordered>li>a {
+            text-decoration: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #353535;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <div class="nav">
+        <span style="margin-right: 8px;">bevy</span>
+        <select class="select" id="selectVersion" onchange="changeVersion()" autocomplete="off">
+            <option
+                value="../../0.12.0/bevy/index.html">
+                0.12.0
+            </option>
+        </select>
+    </div>
+    <div class="content">
+        <input type="text" id="search" placeholder="Search" oninput="searchDebounced()" autocomplete="off">
+
+        <div id="innerContent">
+            <h2>
+                <a class="module" href="index.html">bevy</a>
+            </h2>
+
+            
+
+            
+
+
+<h3 class="item-list-title">Modules</h3>
+<ul class="item-list">
+    
+    <li><a class="module" href="bevy_core_pipeline/index.html">bevy_core_pipeline</a></li>
+    
+    <li><a class="module" href="bevy_pbr/index.html">bevy_pbr</a></li>
+    
+    <li><a class="module" href="bevy_render/index.html">bevy_render</a></li>
+    
+    <li><a class="module" href="bevy_sprite/index.html">bevy_sprite</a></li>
+    
+    <li><a class="module" href="bevy_ui/index.html">bevy_ui</a></li>
+    
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3 class="item-list-title">Shader Definitions</h3>
+<ul class="item-list">
+    
+    <li class="def">0</li>
+    
+    <li class="def">AVAILABLE_STORAGE_BUFFER_BINDINGS</li>
+    
+    <li class="def">BASE_INSTANCE_WORKAROUND</li>
+    
+    <li class="def">BLEND_MULTIPLY</li>
+    
+    <li class="def">BLEND_PREMULTIPLIED_ALPHA</li>
+    
+    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_COHERENCY</li>
+    
+    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_LIGHT_COMPLEXITY</li>
+    
+    <li class="def">CLUSTERED_FORWARD_DEBUG_Z_SLICES</li>
+    
+    <li class="def">DEBAND_DITHER</li>
+    
+    <li class="def">DEFERRED_PREPASS</li>
+    
+    <li class="def">DEPTH_CLAMP_ORTHO</li>
+    
+    <li class="def">DEPTH_PREPASS</li>
+    
+    <li class="def">DIRECTIONAL_LIGHT_SHADOW_MAP_DEBUG_CASCADES</li>
+    
+    <li class="def">ENVIRONMENT_MAP</li>
+    
+    <li class="def">LOAD_PREPASS_NORMALS</li>
+    
+    <li class="def">MAX_CASCADES_PER_LIGHT</li>
+    
+    <li class="def">MAX_DIRECTIONAL_LIGHTS</li>
+    
+    <li class="def">MAY_DISCARD</li>
+    
+    <li class="def">MESH_BINDGROUP_1</li>
+    
+    <li class="def">MORPH_TARGETS</li>
+    
+    <li class="def">MOTION_VECTOR_PREPASS</li>
+    
+    <li class="def">MULTISAMPLED</li>
+    
+    <li class="def">NORMAL_PREPASS</li>
+    
+    <li class="def">NORMAL_PREPASS_OR_DEFERRED_PREPASS</li>
+    
+    <li class="def">NO_ARRAY_TEXTURES_SUPPORT</li>
+    
+    <li class="def">PBR_TRANSMISSION_TEXTURES_SUPPORTED</li>
+    
+    <li class="def">PER_OBJECT_BUFFER_BATCH_SIZE</li>
+    
+    <li class="def">PREMULTIPLY_ALPHA</li>
+    
+    <li class="def">PREPASS_FRAGMENT</li>
+    
+    <li class="def">PREPASS_PIPELINE</li>
+    
+    <li class="def">RELIEF_MAPPING</li>
+    
+    <li class="def">SCREEN_SPACE_AMBIENT_OCCLUSION</li>
+    
+    <li class="def">SCREEN_SPACE_SPECULAR_TRANSMISSION_BLUR_TAPS</li>
+    
+    <li class="def">SHADOW_FILTER_METHOD_CASTANO_13</li>
+    
+    <li class="def">SHADOW_FILTER_METHOD_HARDWARE_2X2</li>
+    
+    <li class="def">SHADOW_FILTER_METHOD_JIMENEZ_14</li>
+    
+    <li class="def">SIXTEEN_BYTE_ALIGNMENT</li>
+    
+    <li class="def">SKINNED</li>
+    
+    <li class="def">STANDARDMATERIAL_NORMAL_MAP</li>
+    
+    <li class="def">TEMPORAL_JITTER</li>
+    
+    <li class="def">TONEMAPPING_PASS</li>
+    
+    <li class="def">TONEMAP_IN_SHADER</li>
+    
+    <li class="def">TONEMAP_METHOD_ACES_FITTED</li>
+    
+    <li class="def">TONEMAP_METHOD_AGX</li>
+    
+    <li class="def">TONEMAP_METHOD_BLENDER_FILMIC</li>
+    
+    <li class="def">TONEMAP_METHOD_NONE</li>
+    
+    <li class="def">TONEMAP_METHOD_REINHARD</li>
+    
+    <li class="def">TONEMAP_METHOD_REINHARD_LUMINANCE</li>
+    
+    <li class="def">TONEMAP_METHOD_SOMEWHAT_BORING_DISPLAY_TRANSFORM</li>
+    
+    <li class="def">TONEMAP_METHOD_TONY_MC_MAPFACE</li>
+    
+    <li class="def">VERTEX_COLORS</li>
+    
+    <li class="def">VERTEX_NORMALS</li>
+    
+    <li class="def">VERTEX_OUTPUT_INSTANCE_INDEX</li>
+    
+    <li class="def">VERTEX_POSITIONS</li>
+    
+    <li class="def">VERTEX_TANGENTS</li>
+    
+    <li class="def">VERTEX_UVS</li>
+    
+    <li class="def">VIEW_PROJECTION_ORTHOGRAPHIC</li>
+    
+    <li class="def">VIEW_PROJECTION_PERSPECTIVE</li>
+    
+    <li class="def">WEBGL2</li>
+    
+</ul>
+
+
+
+<br><br>
+<h5>Compiled With:</h5>
+<ul style="font-size: 0.8rem;">
+    
+    <li>AVAILABLE_STORAGE_BUFFER_BINDINGS: 3u</li>
+    
+    <li>BLEND_MULTIPLY: true</li>
+    
+    <li>BLEND_PREMULTIPLIED_ALPHA: true</li>
+    
+    <li>DEFERRED_PREPASS: true</li>
+    
+    <li>DEPTH_PREPASS: true</li>
+    
+    <li>ENVIRONMENT_MAP: true</li>
+    
+    <li>MAX_CASCADES_PER_LIGHT: 4u</li>
+    
+    <li>MAX_DIRECTIONAL_LIGHTS: 10u</li>
+    
+    <li>MORPH_TARGETS: true</li>
+    
+    <li>MOTION_VECTOR_PREPASS: true</li>
+    
+    <li>MULTISAMPLED: true</li>
+    
+    <li>NORMAL_PREPASS: true</li>
+    
+    <li>NORMAL_PREPASS_OR_DEFERRED_PREPASS: true</li>
+    
+    <li>PBR_TRANSMISSION_TEXTURES_SUPPORTED: true</li>
+    
+    <li>PREPASS_FRAGMENT: true</li>
+    
+    <li>PREPASS_PIPELINE: true</li>
+    
+    <li>SKINNED: true</li>
+    
+    <li>STANDARDMATERIAL_NORMAL_MAP: true</li>
+    
+    <li>TONEMAPPING_PASS: true</li>
+    
+    <li>TONEMAP_METHOD_TONY_MC_MAPFACE: true</li>
+    
+    <li>VERTEX_COLORS: true</li>
+    
+    <li>VERTEX_NORMALS: true</li>
+    
+    <li>VERTEX_OUTPUT_INSTANCE_INDEX: true</li>
+    
+    <li>VERTEX_POSITIONS: true</li>
+    
+    <li>VERTEX_TANGENTS: true</li>
+    
+    <li>VERTEX_UVS: true</li>
+    
+</ul>
+
+
+
+        </div>
+    </div>
+
+    <script src="../../common.js"></script>
+    <script src="items.js"></script>
+    <script>
+        document.getElementById("selectVersion").innerHTML = "";
+        addVersion("latest");
+        for (var i = 0; i < window.DOCS_COMMON.versions.length; i++) {
+            addVersion(window.DOCS_COMMON.versions[i]);
+        }
+
+        function addVersion(version) {
+            var select = document.getElementById("selectVersion");
+            var base = "../../";
+
+            var option = document.createElement("option");
+            option.selected = version == "0.12.0";
+            option.value = base + version + "/bevy/index.html";
+            option.innerText = version;
+            select.appendChild(option);
+        }
+
+        function changeVersion() {
+            var value = document.getElementById("selectVersion").value;
+            location.href = value;
+        }
+    </script>
+    <script>
+        window.DOCS_INNER_CONTENT = document.getElementById("innerContent").innerHTML;
+
+        onUrlChange();
+        window.addEventListener('popstate', function (event) {
+            onUrlChange();
+        });
+
+        function onUrlChange() {
+            var query = document.getElementById("search").value;
+
+            if ('URLSearchParams' in window) {
+                var searchParams = new URLSearchParams(window.location.search);
+                var param = searchParams.get("search") || "";
+                if (param !== query) {
+                    document.getElementById("search").value = param;
+                    search();
+                }
+            }
+        }
+
+        function searchDebounced() {
+            if (window.DOCS_SEARCH_DEBOUNCE) {
+                clearTimeout(window.DOCS_SEARCH_DEBOUNCE);
+            }
+            window.DOCS_SEARCH_DEBOUNCE = setTimeout(search, 400);
+        }
+
+        function search() {
+            var innerContentElement = document.getElementById("innerContent");
+            var query = document.getElementById("search").value;
+            var items = window.DOCS_ITEMS || [];
+
+            if ('URLSearchParams' in window) {
+                var searchParams = new URLSearchParams(window.location.search);
+                if ((searchParams.get("search") || "") !== query) {
+                    if (query === "") {
+                        searchParams.delete("search");
+                    } else {
+                        searchParams.set("search", query);
+                    }
+
+                    var searchParamsString = searchParams.toString();
+                    if (searchParamsString === "") {
+                        history.pushState(null, '', window.location.pathname);
+                    } else {
+                        history.pushState(null, '', window.location.pathname + '?' + searchParamsString);
+                    }
+                }
+            }
+
+            if (query === "") {
+                innerContentElement.innerHTML = window.DOCS_INNER_CONTENT;
+                return;
+            }
+
+            var itemsFiltered = items.filter(function (item) {
+                return item.name.toLowerCase().includes(query.toLowerCase());
+            });
+
+            innerContentElement.innerHTML = "";
+            var itemList = document.createElement("ul");
+            itemList.className = "item-list item-list-bordered";
+            for (var i = 0; i < itemsFiltered.length; i++) {
+                itemList.appendChild(createItemElement(itemsFiltered[i]));
+            }
+            innerContentElement.appendChild(itemList);
+        }
+
+        function createItemElement(item) {
+            var className = "";
+            switch (item.kind) {
+                case "Module":
+                    className = "module";
+                    break;
+                case "Constant":
+                    className = "const";
+                    break;
+                case "GlobalVariable":
+                    className = "var";
+                    break;
+                case "Struct":
+                    className = "struct";
+                    break;
+                case "Function":
+                    className = "fn";
+                    break;
+                default: break;
+            }
+
+            var linkElement = document.createElement("a");
+            linkElement.href = "../" + item.url;
+
+            for (var i = 0; i < item.path.length; i++) {
+                var segment = document.createElement("span");
+                segment.className = "path";
+                segment.innerText = item.path[i];
+                linkElement.appendChild(segment);
+
+                var segment = document.createElement("span");
+                segment.className = "path";
+                segment.innerText = "::";
+                linkElement.appendChild(segment);
+
+                linkElement.appendChild(document.createElement("wbr"));
+            }
+
+            var itemElement = document.createElement("span");
+            itemElement.className = className;
+            itemElement.innerText = item.name;
+            linkElement.appendChild(itemElement);
+
+            var listElement = document.createElement("li");
+            listElement.appendChild(linkElement);
+            return listElement;
+        }
+    </script>
+</body>
+
+</html>
