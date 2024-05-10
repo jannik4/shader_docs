@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_ui/0.12.1/source/src/render/ui_vertex_output.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_ui/0.13.2/source/src/render/ui_vertex_output.wgsl" target="_blank">source</a>
             
 
             
@@ -191,6 +191,7 @@
 <code>struct UiVertexOutput {
     @location(0) uv: vec2&lt;f32&gt;,
     @location(1) border_widths: vec4&lt;f32&gt;,
+    @location(2) @interpolate(flat) size: vec2&lt;f32&gt;,
     @builtin(position) position: vec4&lt;f32&gt;
 }</code>
 </pre>

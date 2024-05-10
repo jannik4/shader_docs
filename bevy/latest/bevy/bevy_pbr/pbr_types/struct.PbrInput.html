@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.12.1/source/src/render/pbr_types.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.13.2/source/src/render/pbr_types.wgsl" target="_blank">source</a>
             
 
             
@@ -191,12 +191,14 @@
 <code>struct PbrInput {
     material: <a class="struct"
     href="../../bevy_pbr/pbr_types/struct.StandardMaterial.html">StandardMaterial</a>,
-    occlusion: vec3&lt;f32&gt;,
+    diffuse_occlusion: vec3&lt;f32&gt;,
+    specular_occlusion: f32,
     frag_coord: vec4&lt;f32&gt;,
     world_position: vec4&lt;f32&gt;,
     world_normal: vec3&lt;f32&gt;,
     N: vec3&lt;f32&gt;,
     V: vec3&lt;f32&gt;,
+    lightmap_light: vec3&lt;f32&gt;,
     is_orthographic: bool,
     flags: u32
 }</code>

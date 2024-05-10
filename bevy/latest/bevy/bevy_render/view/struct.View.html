@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_render/0.12.1/source/src/view/view.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_render/0.13.2/source/src/view/view.wgsl" target="_blank">source</a>
             
 
             
@@ -197,11 +197,13 @@
     projection: mat4x4&lt;f32&gt;,
     inverse_projection: mat4x4&lt;f32&gt;,
     world_position: vec3&lt;f32&gt;,
+    exposure: f32,
     viewport: vec4&lt;f32&gt;,
     frustum: array&lt;vec4&lt;f32&gt;, 6&gt;,
     color_grading: <a class="struct"
     href="../../bevy_render/view/struct.ColorGrading.html">ColorGrading</a>,
-    mip_bias: f32
+    mip_bias: f32,
+    render_layers: u32
 }</code>
 </pre>
 
