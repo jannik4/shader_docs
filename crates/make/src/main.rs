@@ -7,6 +7,30 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let docs = vec![
         compiler::compile(
             "bevy",
+            Version::new(0, 13, 2),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 13, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 13, 0),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
             Version::new(0, 12, 1),
             |name| name.starts_with("bevy"),
             shader_def_values_0_12(),
@@ -61,6 +85,52 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+fn shader_def_values_0_13() -> IndexMap<String, ShaderDefValue> {
+    use ShaderDefValue::*;
+
+    [
+        ("AVAILABLE_STORAGE_BUFFER_BINDINGS", UInt(3)),
+        ("BLEND_MULTIPLY", Bool(true)),
+        ("BLEND_PREMULTIPLIED_ALPHA", Bool(true)),
+        ("DEFERRED_PREPASS", Bool(true)),
+        ("DEPTH_PREPASS", Bool(true)),
+        ("ENVIRONMENT_MAP", Bool(true)),
+        ("IRRADIANCE_VOLUME", Bool(true)),
+        ("IRRADIANCE_VOLUMES_ARE_USABLE", Bool(true)),
+        ("LIGHTMAP", Bool(true)),
+        ("MAX_CASCADES_PER_LIGHT", UInt(4)),
+        ("MAX_DIRECTIONAL_LIGHTS", UInt(10)),
+        ("MORPH_TARGETS", Bool(true)),
+        ("MOTION_VECTOR_PREPASS", Bool(true)),
+        ("MULTISAMPLED", Bool(true)),
+        ("NORMAL_PREPASS", Bool(true)),
+        ("NORMAL_PREPASS_OR_DEFERRED_PREPASS", Bool(true)),
+        ("PBR_TRANSMISSION_TEXTURES_SUPPORTED", Bool(true)),
+        ("PREPASS_FRAGMENT", Bool(true)),
+        ("PREPASS_PIPELINE", Bool(true)),
+        ("SKINNED", Bool(true)),
+        ("STANDARD_MATERIAL_DIFFUSE_TRANSMISSION", Bool(true)),
+        ("STANDARD_MATERIAL_NORMAL_MAP", Bool(true)),
+        (
+            "STANDARD_MATERIAL_SPECULAR_OR_DIFFUSE_TRANSMISSION",
+            Bool(true),
+        ),
+        ("STANDARD_MATERIAL_SPECULAR_TRANSMISSION", Bool(true)),
+        ("TONEMAPPING_PASS", Bool(true)),
+        ("TONEMAP_METHOD_TONY_MC_MAPFACE", Bool(true)),
+        ("VERTEX_COLORS", Bool(true)),
+        ("VERTEX_NORMALS", Bool(true)),
+        ("VERTEX_OUTPUT_INSTANCE_INDEX", Bool(true)),
+        ("VERTEX_POSITIONS", Bool(true)),
+        ("VERTEX_TANGENTS", Bool(true)),
+        ("VERTEX_UVS", Bool(true)),
+        ("VERTEX_UVS_B", Bool(true)),
+    ]
+    .into_iter()
+    .map(|(key, value)| (key.to_string(), value))
+    .collect()
 }
 
 fn shader_def_values_0_12() -> IndexMap<String, ShaderDefValue> {

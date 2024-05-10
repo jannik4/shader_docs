@@ -108,6 +108,9 @@ pub enum Literal {
     U64(u64),
     I64(i64),
     Bool(bool),
+
+    AbstractInt(i64),
+    AbstractFloat(f64),
 }
 
 impl fmt::Display for Literal {
@@ -120,6 +123,9 @@ impl fmt::Display for Literal {
             Literal::U64(value) => write!(f, "{}", value),
             Literal::I64(value) => write!(f, "{}", value),
             Literal::Bool(value) => write!(f, "{}", value),
+
+            Literal::AbstractInt(value) => write!(f, "{}", value),
+            Literal::AbstractFloat(value) => write!(f, "{}", value),
         }
     }
 }
@@ -141,6 +147,11 @@ pub enum Type {
         def_path: Option<Vec<String>>,
     },
     Pointer(Box<Type>),
+    PointerWithAddressSpace {
+        base: Box<Type>,
+        address_space: &'static str,
+        maybe_access: Option<&'static str>,
+    },
     ArrayConstant(Box<Type>, Option<u32>),
     ArrayDynamic(Box<Type>),
     BindingArrayConstant(Box<Type>, Option<u32>),

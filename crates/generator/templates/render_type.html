@@ -10,6 +10,8 @@
 {%- endif %}
 {%- when Type::Pointer with (inner) -%}
 ptr&lt;{{ Self::render_rec(self, inner.deref())|safe }}&gt;
+{%- when Type::PointerWithAddressSpace with { base, address_space, maybe_access } -%}
+ptr&lt;{{ address_space }}, {{ Self::render_rec(self, base.deref())|safe }}{% if let Some(maybe_access) = maybe_access %}, {{ maybe_access }}{% endif %}&gt;
 {%- when Type::ArrayConstant with (inner, size) -%}
 array&lt;{{ Self::render_rec(self, inner.deref())|safe }}, {{ self::display_array_size(size) }}&gt;
 {%- when Type::ArrayDynamic with (inner) -%}
