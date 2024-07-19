@@ -183,15 +183,21 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_render/0.13.2/source/src/view/view.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_render/0.14.0/source/src/view/view.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
 <code>struct ColorGrading {
+    balance: mat3x3&lt;f32&gt;,
+    saturation: vec3&lt;f32&gt;,
+    contrast: vec3&lt;f32&gt;,
+    gamma: vec3&lt;f32&gt;,
+    gain: vec3&lt;f32&gt;,
+    lift: vec3&lt;f32&gt;,
+    midtone_range: vec2&lt;f32&gt;,
     exposure: f32,
-    gamma: f32,
-    pre_saturation: f32,
+    hue: f32,
     post_saturation: f32
 }</code>
 </pre>

@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.13.2/source/src/render/pbr_types.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/render/pbr_types.wgsl" target="_blank">source</a>
             
 
             
@@ -191,6 +191,8 @@
 <code>struct StandardMaterial {
     base_color: vec4&lt;f32&gt;,
     emissive: vec4&lt;f32&gt;,
+    attenuation_color: vec4&lt;f32&gt;,
+    uv_transform: mat3x3&lt;f32&gt;,
     perceptual_roughness: f32,
     metallic: f32,
     reflectance: f32,
@@ -199,7 +201,10 @@
     thickness: f32,
     ior: f32,
     attenuation_distance: f32,
-    attenuation_color: vec4&lt;f32&gt;,
+    clearcoat: f32,
+    clearcoat_perceptual_roughness: f32,
+    anisotropy_strength: f32,
+    anisotropy_rotation: vec2&lt;f32&gt;,
     flags: u32,
     alpha_cutoff: f32,
     parallax_depth_scale: f32,

@@ -220,6 +220,10 @@
     
     <li><a class="module" href="mesh_view_types/index.html">mesh_view_types</a></li>
     
+    <li><a class="module" href="meshlet_bindings/index.html">meshlet_bindings</a></li>
+    
+    <li><a class="module" href="meshlet_visibility_buffer_resolve/index.html">meshlet_visibility_buffer_resolve</a></li>
+    
     <li><a class="module" href="morph/index.html">morph</a></li>
     
     <li><a class="module" href="parallax_mapping/index.html">parallax_mapping</a></li>
@@ -244,6 +248,8 @@
     
     <li><a class="module" href="prepass_utils/index.html">prepass_utils</a></li>
     
+    <li><a class="module" href="raymarch/index.html">raymarch</a></li>
+    
     <li><a class="module" href="rgb9e5/index.html">rgb9e5</a></li>
     
     <li><a class="module" href="shadow_sampling/index.html">shadow_sampling</a></li>
@@ -251,6 +257,8 @@
     <li><a class="module" href="shadows/index.html">shadows</a></li>
     
     <li><a class="module" href="skinning/index.html">skinning</a></li>
+    
+    <li><a class="module" href="ssr/index.html">ssr</a></li>
     
     <li><a class="module" href="transmission/index.html">transmission</a></li>
     
@@ -273,6 +281,8 @@
 <h3 class="item-list-title">Shader Definitions</h3>
 <ul class="item-list">
     
+    <li class="def">ALPHA_TO_COVERAGE</li>
+    
     <li class="def">AVAILABLE_STORAGE_BUFFER_BINDINGS</li>
     
     <li class="def">BLEND_MULTIPLY</li>
@@ -281,7 +291,7 @@
     
     <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_COHERENCY</li>
     
-    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_LIGHT_COMPLEXITY</li>
+    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_COMPLEXITY</li>
     
     <li class="def">CLUSTERED_FORWARD_DEBUG_Z_SLICES</li>
     
@@ -311,6 +321,14 @@
     
     <li class="def">MAY_DISCARD</li>
     
+    <li class="def">MESHLET_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_FILL_CLUSTER_BUFFERS_PASS</li>
+    
+    <li class="def">MESHLET_MESH_MATERIAL_PASS</li>
+    
+    <li class="def">MESHLET_VISIBILITY_BUFFER_RASTER_PASS</li>
+    
     <li class="def">MORPH_TARGETS</li>
     
     <li class="def">MOTION_VECTOR_PREPASS</li>
@@ -327,6 +345,10 @@
     
     <li class="def">NO_CUBE_ARRAY_TEXTURES_SUPPORT</li>
     
+    <li class="def">PBR_ANISOTROPY_TEXTURE_SUPPORTED</li>
+    
+    <li class="def">PBR_MULTI_LAYER_MATERIAL_TEXTURES_SUPPORTED</li>
+    
     <li class="def">PBR_TRANSMISSION_TEXTURES_SUPPORTED</li>
     
     <li class="def">PER_OBJECT_BUFFER_BATCH_SIZE</li>
@@ -341,23 +363,55 @@
     
     <li class="def">SCREEN_SPACE_AMBIENT_OCCLUSION</li>
     
+    <li class="def">SCREEN_SPACE_REFLECTIONS</li>
+    
     <li class="def">SCREEN_SPACE_SPECULAR_TRANSMISSION_BLUR_TAPS</li>
     
-    <li class="def">SHADOW_FILTER_METHOD_CASTANO_13</li>
+    <li class="def">SHADOW_FILTER_METHOD_GAUSSIAN</li>
     
     <li class="def">SHADOW_FILTER_METHOD_HARDWARE_2X2</li>
     
-    <li class="def">SHADOW_FILTER_METHOD_JIMENEZ_14</li>
+    <li class="def">SHADOW_FILTER_METHOD_TEMPORAL</li>
     
     <li class="def">SKINNED</li>
     
+    <li class="def">STANDARD_MATERIAL_ANISOTROPY</li>
+    
+    <li class="def">STANDARD_MATERIAL_ANISOTROPY_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_BASE_COLOR_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_NORMAL_MAP</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_NORMAL_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_ROUGHNESS_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_DIFFUSE_OR_SPECULAR_TRANSMISSION</li>
+    
     <li class="def">STANDARD_MATERIAL_DIFFUSE_TRANSMISSION</li>
+    
+    <li class="def">STANDARD_MATERIAL_DIFFUSE_TRANSMISSION_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_EMISSIVE_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_METALLIC_ROUGHNESS_UV_B</li>
     
     <li class="def">STANDARD_MATERIAL_NORMAL_MAP</li>
     
-    <li class="def">STANDARD_MATERIAL_SPECULAR_OR_DIFFUSE_TRANSMISSION</li>
+    <li class="def">STANDARD_MATERIAL_NORMAL_MAP_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_OCCLUSION_UV_B</li>
     
     <li class="def">STANDARD_MATERIAL_SPECULAR_TRANSMISSION</li>
+    
+    <li class="def">STANDARD_MATERIAL_SPECULAR_TRANSMISSION_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_THICKNESS_UV_B</li>
     
     <li class="def">TEMPORAL_JITTER</li>
     
@@ -375,11 +429,15 @@
     
     <li class="def">VERTEX_UVS</li>
     
+    <li class="def">VERTEX_UVS_A</li>
+    
     <li class="def">VERTEX_UVS_B</li>
     
     <li class="def">VIEW_PROJECTION_ORTHOGRAPHIC</li>
     
     <li class="def">VIEW_PROJECTION_PERSPECTIVE</li>
+    
+    <li class="def">VISIBILITY_RANGE_DITHER</li>
     
     <li class="def">WEBGL2</li>
     

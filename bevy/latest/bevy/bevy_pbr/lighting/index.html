@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.13.2/source/src/render/pbr_lighting.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/render/pbr_lighting.wgsl" target="_blank">source</a>
             
 
             
@@ -191,9 +191,29 @@
 
 
 
+<h3 class="item-list-title">Constants</h3>
+<ul class="item-list">
+    
+    <li><a class="const" href="const.LAYER_BASE.html">LAYER_BASE</a></li>
+    
+    <li><a class="const" href="const.LAYER_CLEARCOAT.html">LAYER_CLEARCOAT</a></li>
+    
+</ul>
 
 
 
+
+
+<h3 class="item-list-title">Structs</h3>
+<ul class="item-list">
+    
+    <li><a class="struct" href="struct.DerivedLightingInput.html">DerivedLightingInput</a></li>
+    
+    <li><a class="struct" href="struct.LayerLightingInput.html">LayerLightingInput</a></li>
+    
+    <li><a class="struct" href="struct.LightingInput.html">LightingInput</a></li>
+    
+</ul>
 
 
 
@@ -201,6 +221,8 @@
 <ul class="item-list">
     
     <li><a class="fn" href="fn.D_GGX.html">D_GGX</a></li>
+    
+    <li><a class="fn" href="fn.D_GGX_anisotropic.html">D_GGX_anisotropic</a></li>
     
     <li><a class="fn" href="fn.EnvBRDFApprox.html">EnvBRDFApprox</a></li>
     
@@ -212,7 +234,15 @@
     
     <li><a class="fn" href="fn.Fd_Burley.html">Fd_Burley</a></li>
     
+    <li><a class="fn" href="fn.V_GGX_anisotropic.html">V_GGX_anisotropic</a></li>
+    
+    <li><a class="fn" href="fn.V_Kelemen.html">V_Kelemen</a></li>
+    
     <li><a class="fn" href="fn.V_SmithGGXCorrelated.html">V_SmithGGXCorrelated</a></li>
+    
+    <li><a class="fn" href="fn.compute_specular_layer_values_for_point_light.html">compute_specular_layer_values_for_point_light</a></li>
+    
+    <li><a class="fn" href="fn.derive_lighting_input.html">derive_lighting_input</a></li>
     
     <li><a class="fn" href="fn.directional_light.html">directional_light</a></li>
     
@@ -226,11 +256,24 @@
     
     <li><a class="fn" href="fn.specular.html">specular</a></li>
     
+    <li><a class="fn" href="fn.specular_clearcoat.html">specular_clearcoat</a></li>
+    
+    <li><a class="fn" href="fn.specular_multiscatter.html">specular_multiscatter</a></li>
+    
     <li><a class="fn" href="fn.spot_light.html">spot_light</a></li>
     
 </ul>
 
 
+
+<h3 class="item-list-title">Shader Definitions</h3>
+<ul class="item-list">
+    
+    <li class="def">STANDARD_MATERIAL_ANISOTROPY</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT</li>
+    
+</ul>
 
 
 

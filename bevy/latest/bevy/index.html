@@ -217,6 +217,8 @@
     
     <li class="def">0</li>
     
+    <li class="def">ALPHA_TO_COVERAGE</li>
+    
     <li class="def">AVAILABLE_STORAGE_BUFFER_BINDINGS</li>
     
     <li class="def">BLEND_MULTIPLY</li>
@@ -225,7 +227,7 @@
     
     <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_COHERENCY</li>
     
-    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_LIGHT_COMPLEXITY</li>
+    <li class="def">CLUSTERED_FORWARD_DEBUG_CLUSTER_COMPLEXITY</li>
     
     <li class="def">CLUSTERED_FORWARD_DEBUG_Z_SLICES</li>
     
@@ -241,6 +243,8 @@
     
     <li class="def">ENVIRONMENT_MAP</li>
     
+    <li class="def">HUE_ROTATE</li>
+    
     <li class="def">IRRADIANCE_VOLUME</li>
     
     <li class="def">IRRADIANCE_VOLUMES_ARE_USABLE</li>
@@ -254,6 +258,14 @@
     <li class="def">MAX_DIRECTIONAL_LIGHTS</li>
     
     <li class="def">MAY_DISCARD</li>
+    
+    <li class="def">MESHLET_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_FILL_CLUSTER_BUFFERS_PASS</li>
+    
+    <li class="def">MESHLET_MESH_MATERIAL_PASS</li>
+    
+    <li class="def">MESHLET_VISIBILITY_BUFFER_RASTER_PASS</li>
     
     <li class="def">MORPH_TARGETS</li>
     
@@ -271,6 +283,10 @@
     
     <li class="def">NO_CUBE_ARRAY_TEXTURES_SUPPORT</li>
     
+    <li class="def">PBR_ANISOTROPY_TEXTURE_SUPPORTED</li>
+    
+    <li class="def">PBR_MULTI_LAYER_MATERIAL_TEXTURES_SUPPORTED</li>
+    
     <li class="def">PBR_TRANSMISSION_TEXTURES_SUPPORTED</li>
     
     <li class="def">PER_OBJECT_BUFFER_BATCH_SIZE</li>
@@ -285,29 +301,61 @@
     
     <li class="def">SCREEN_SPACE_AMBIENT_OCCLUSION</li>
     
+    <li class="def">SCREEN_SPACE_REFLECTIONS</li>
+    
     <li class="def">SCREEN_SPACE_SPECULAR_TRANSMISSION_BLUR_TAPS</li>
     
-    <li class="def">SHADOW_FILTER_METHOD_CASTANO_13</li>
+    <li class="def">SECTIONAL_COLOR_GRADING</li>
+    
+    <li class="def">SHADOW_FILTER_METHOD_GAUSSIAN</li>
     
     <li class="def">SHADOW_FILTER_METHOD_HARDWARE_2X2</li>
     
-    <li class="def">SHADOW_FILTER_METHOD_JIMENEZ_14</li>
+    <li class="def">SHADOW_FILTER_METHOD_TEMPORAL</li>
     
     <li class="def">SIXTEEN_BYTE_ALIGNMENT</li>
     
     <li class="def">SKINNED</li>
     
+    <li class="def">STANDARD_MATERIAL_ANISOTROPY</li>
+    
+    <li class="def">STANDARD_MATERIAL_ANISOTROPY_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_BASE_COLOR_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_NORMAL_MAP</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_NORMAL_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_ROUGHNESS_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_CLEARCOAT_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_DIFFUSE_OR_SPECULAR_TRANSMISSION</li>
+    
     <li class="def">STANDARD_MATERIAL_DIFFUSE_TRANSMISSION</li>
+    
+    <li class="def">STANDARD_MATERIAL_DIFFUSE_TRANSMISSION_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_EMISSIVE_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_METALLIC_ROUGHNESS_UV_B</li>
     
     <li class="def">STANDARD_MATERIAL_NORMAL_MAP</li>
     
-    <li class="def">STANDARD_MATERIAL_SPECULAR_OR_DIFFUSE_TRANSMISSION</li>
+    <li class="def">STANDARD_MATERIAL_NORMAL_MAP_UV_B</li>
+    
+    <li class="def">STANDARD_MATERIAL_OCCLUSION_UV_B</li>
     
     <li class="def">STANDARD_MATERIAL_SPECULAR_TRANSMISSION</li>
     
-    <li class="def">TEMPORAL_JITTER</li>
+    <li class="def">STANDARD_MATERIAL_SPECULAR_TRANSMISSION_UV_B</li>
     
-    <li class="def">TONEMAPPING_PASS</li>
+    <li class="def">STANDARD_MATERIAL_THICKNESS_UV_B</li>
+    
+    <li class="def">TEMPORAL_JITTER</li>
     
     <li class="def">TONEMAP_IN_SHADER</li>
     
@@ -339,13 +387,19 @@
     
     <li class="def">VERTEX_UVS</li>
     
+    <li class="def">VERTEX_UVS_A</li>
+    
     <li class="def">VERTEX_UVS_B</li>
     
     <li class="def">VIEW_PROJECTION_ORTHOGRAPHIC</li>
     
     <li class="def">VIEW_PROJECTION_PERSPECTIVE</li>
     
+    <li class="def">VISIBILITY_RANGE_DITHER</li>
+    
     <li class="def">WEBGL2</li>
+    
+    <li class="def">WHITE_BALANCE</li>
     
 </ul>
 
@@ -381,8 +435,6 @@
     
     <li>MOTION_VECTOR_PREPASS: true</li>
     
-    <li>MULTISAMPLED: true</li>
-    
     <li>NORMAL_PREPASS: true</li>
     
     <li>NORMAL_PREPASS_OR_DEFERRED_PREPASS: true</li>
@@ -395,15 +447,17 @@
     
     <li>SKINNED: true</li>
     
+    <li>STANDARD_MATERIAL_CLEARCOAT: true</li>
+    
     <li>STANDARD_MATERIAL_DIFFUSE_TRANSMISSION: true</li>
     
     <li>STANDARD_MATERIAL_NORMAL_MAP: true</li>
     
-    <li>STANDARD_MATERIAL_SPECULAR_OR_DIFFUSE_TRANSMISSION: true</li>
-    
     <li>STANDARD_MATERIAL_SPECULAR_TRANSMISSION: true</li>
     
-    <li>TONEMAPPING_PASS: true</li>
+    <li>TONEMAPPING_LUT_SAMPLER_BINDING_INDEX: 20u</li>
+    
+    <li>TONEMAPPING_LUT_TEXTURE_BINDING_INDEX: 20u</li>
     
     <li>TONEMAP_METHOD_TONY_MC_MAPFACE: true</li>
     
@@ -418,6 +472,8 @@
     <li>VERTEX_TANGENTS: true</li>
     
     <li>VERTEX_UVS: true</li>
+    
+    <li>VERTEX_UVS_A: true</li>
     
     <li>VERTEX_UVS_B: true</li>
     

@@ -183,18 +183,16 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.13.2/source/src/render/pbr_functions.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/render/pbr_functions.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block"><code>fn apply_normal_mapping(
     standard_material_flags: u32, 
-    world_normal: vec3&lt;f32&gt;, 
+    TBN: mat3x3&lt;f32&gt;, 
     double_sided: bool, 
     is_front: bool, 
-    world_tangent: vec4&lt;f32&gt;, 
-    uv: vec2&lt;f32&gt;, 
-    mip_bias: f32
+    in_Nt: vec3&lt;f32&gt;
 ) -> vec3&lt;f32&gt;</code>
 </pre>
 

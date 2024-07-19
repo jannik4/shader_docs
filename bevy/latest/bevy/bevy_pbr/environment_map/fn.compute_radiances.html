@@ -183,14 +183,14 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.13.2/source/src/light_probe/environment_map.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/light_probe/environment_map.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block"><code>fn compute_radiances(
-    perceptual_roughness: f32, 
-    N: vec3&lt;f32&gt;, 
-    R: vec3&lt;f32&gt;, 
+    input: ptr&lt;function, <a class="struct"
+    href="../../bevy_pbr/lighting/struct.LightingInput.html">LightingInput</a>&gt;, 
+    layer: u32, 
     world_position: vec3&lt;f32&gt;, 
     found_diffuse_indirect: bool
 ) -> <a class="struct"
