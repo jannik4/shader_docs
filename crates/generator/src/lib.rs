@@ -432,6 +432,10 @@ fn builtin_str(built_in: &BuiltIn) -> Result<&'static str, Box<dyn std::error::E
         BuiltIn::LocalInvocationIndex => "local_invocation_index",
         BuiltIn::WorkGroupId => "workgroup_id",
         BuiltIn::NumWorkGroups => "num_workgroups",
+        BuiltIn::NumSubgroups => "num_subgroups",
+        BuiltIn::SubgroupId => "subgroup_id",
+        BuiltIn::SubgroupSize => "subgroup_size",
+        BuiltIn::SubgroupInvocationId => "subgroup_invocation_id",
         BuiltIn::BaseInstance
         | BuiltIn::BaseVertex
         | BuiltIn::ClipDistance

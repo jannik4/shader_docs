@@ -27,6 +27,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "arrayvec"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "96d30a06541fbafbc7f82ed10c06164cfbd2c401138f6addd8404629c4b16711"
+
+[[package]]
 name = "askama"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -129,9 +135,9 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "bitflags"
-version = "2.4.1"
+version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "327762f6e5a765692301e5bb513e0d9fef63be86bbc14528052b1cd3e6f03e07"
+checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
 
 [[package]]
 name = "bumpalo"
@@ -213,9 +219,11 @@ dependencies = [
  "naga 0.13.0",
  "naga 0.14.1",
  "naga 0.19.2",
+ "naga 0.20.0",
  "naga_oil 0.10.1",
  "naga_oil 0.11.0",
  "naga_oil 0.13.0",
+ "naga_oil 0.14.0",
  "naga_oil 0.8.2",
  "regex",
  "reqwest",
@@ -696,7 +704,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c1ceaaa4eedaece7e4ec08c55c640ba03dbb73fb812a6570a59bcf1930d0f70e"
 dependencies = [
  "bit-set",
- "bitflags 2.4.1",
+ "bitflags 2.6.0",
  "codespan-reporting",
  "hexf-parse",
  "indexmap 1.9.3",
@@ -716,7 +724,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6cd05939c491da968a42986204b7431678be21fdcd4b10cc84997ba130ada5a4"
 dependencies = [
  "bit-set",
- "bitflags 2.4.1",
+ "bitflags 2.6.0",
  "codespan-reporting",
  "hexf-parse",
  "indexmap 2.1.0",
@@ -736,7 +744,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "50e3524642f53d9af419ab5e8dd29d3ba155708267667c2f3f06c88c9e130843"
 dependencies = [
  "bit-set",
- "bitflags 2.4.1",
+ "bitflags 2.6.0",
+ "codespan-reporting",
+ "hexf-parse",
+ "indexmap 2.1.0",
+ "log",
+ "num-traits",
+ "pp-rs",
+ "rustc-hash",
+ "termcolor",
+ "thiserror",
+ "unicode-xid",
+]
+
+[[package]]
+name = "naga"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e536ae46fcab0876853bd4a632ede5df4b1c2527a58f6c5a4150fe86be858231"
+dependencies = [
+ "arrayvec",
+ "bit-set",
+ "bitflags 2.6.0",
  "codespan-reporting",
  "hexf-parse",
  "indexmap 2.1.0",
@@ -830,6 +859,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "naga_oil"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "275d9720a7338eedac966141089232514c84d76a246a58ef501af88c5edf402f"
+dependencies = [
+ "bit-set",
+ "codespan-reporting",
+ "data-encoding",
+ "indexmap 2.1.0",
+ "naga 0.20.0",
+ "once_cell",
+ "regex",
+ "regex-syntax 0.8.2",
+ "rustc-hash",
+ "thiserror",
+ "tracing",
+ "unicode-ident",
+]
+
+[[package]]
 name = "native-tls"
 version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -897,7 +946,7 @@ version = "0.10.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79a4c6c3a2b158f7f8f2a2fc5a969fa3a068df6fc9dbb4a43845436e3af7c800"
 dependencies = [
- "bitflags 2.4.1",
+ "bitflags 2.6.0",
  "cfg-if",
  "foreign-types",
  "libc",
@@ -1101,7 +1150,7 @@ version = "0.38.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9470c4bf8246c8daf25f9598dca807fb6510347b1e1cfa55749113850c79d88a"
 dependencies = [
- "bitflags 2.4.1",
+ "bitflags 2.6.0",
  "errno",
  "libc",
  "linux-raw-sys",
