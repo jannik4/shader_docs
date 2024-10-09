@@ -1,5 +1,7 @@
 mod all_items;
 
+mod functions;
+
 use askama::Template;
 use docs::{
     Binding, BuiltIn, Constant, Doc, Function, GlobalVariable, Interpolation, Module, Sampling,

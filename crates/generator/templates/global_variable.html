@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ functions::to_html(var.comment)|safe }}
 <pre class="code-block">
 <code>
     {%- if let Some(binding) = var.binding %}@group({{ binding.group }}) @binding({{ binding.binding }}) {% endif -%}

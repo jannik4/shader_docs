@@ -1,20 +1,32 @@
+use compiler::CrateLocation;
 use docs::{IndexMap, ShaderDefValue, Version};
 use std::path::Path;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Compile docs
     let cache_path = Path::new("target/shader_docs_cache");
+    let crate_location = CrateLocation::CratesIo(compiler::CratesIoIdentifier { name: "bevy" });
     let docs = vec![
         compiler::compile(
-            "bevy",
+            &CrateLocation::Local(compiler::CrateLocalPath {
+                path: &Path::new("../bevy"),
+            }),
+            Version::new(0, 15, 0),
+            |name| name.starts_with("bevy"),
+            custom_shader_defs(),
+            cache_path,
+            compiler::CompilerBackend::V0_15,
+        )?,
+        compiler::compile(
+            &crate_location,
             Version::new(0, 14, 0),
             |name| name.starts_with("bevy"),
-            shader_def_values_0_14(),
+            custom_shader_defs(),
             cache_path,
             compiler::CompilerBackend::V0_14,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 13, 2),
             |name| name.starts_with("bevy"),
             shader_def_values_0_13(),
@@ -22,7 +34,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_13,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 13, 1),
             |name| name.starts_with("bevy"),
             shader_def_values_0_13(),
@@ -30,7 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_13,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 13, 0),
             |name| name.starts_with("bevy"),
             shader_def_values_0_13(),
@@ -38,7 +50,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_13,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 12, 1),
             |name| name.starts_with("bevy"),
             shader_def_values_0_12(),
@@ -46,7 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_10,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 12, 0),
             |name| name.starts_with("bevy"),
             shader_def_values_0_12(),
@@ -54,7 +66,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_10,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 11, 3),
             |name| name.starts_with("bevy"),
             shader_def_values_0_11(),
@@ -62,7 +74,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_08,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 11, 2),
             |name| name.starts_with("bevy"),
             shader_def_values_0_11(),
@@ -70,7 +82,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_08,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 11, 1),
             |name| name.starts_with("bevy"),
             shader_def_values_0_11(),
@@ -78,7 +90,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             compiler::CompilerBackend::V0_08,
         )?,
         compiler::compile(
-            "bevy",
+            &crate_location,
             Version::new(0, 11, 0),
             |name| name.starts_with("bevy"),
             shader_def_values_0_11(),
@@ -95,8 +107,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-// TODO: More shader defs available on 0.14
-fn shader_def_values_0_14() -> IndexMap<String, ShaderDefValue> {
+fn custom_shader_defs() -> IndexMap<String, ShaderDefValue> {
     use ShaderDefValue::*;
 
     [
@@ -135,6 +146,8 @@ fn shader_def_values_0_14() -> IndexMap<String, ShaderDefValue> {
         ("VERTEX_UVS", Bool(true)),
         ("VERTEX_UVS_A", Bool(true)),
         ("VERTEX_UVS_B", Bool(true)),
+        // 0.15
+        ("DIRECTIONAL_LIGHT_SHADOW_MAP_DEBUG_CASCADES", Bool(true)),
     ]
     .into_iter()
     .map(|(key, value)| (key.to_string(), value))

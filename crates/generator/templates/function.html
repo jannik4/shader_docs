@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ functions::to_html(function.comment)|safe }}
 <pre class="code-block">
 
 {%- let ws_pre %}

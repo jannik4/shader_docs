@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ functions::to_html(constant.comment)|safe }}
 <pre class="code-block">
 <code>const {{ constant.name }}: {{ self::render_type(constant.ty, module_path.level)|safe }} = {{ constant.init }};</code>
 </pre>

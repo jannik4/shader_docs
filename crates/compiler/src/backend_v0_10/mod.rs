@@ -87,6 +87,7 @@ pub fn compile(
                     name: Ident::from(constant.name.clone()),
                     ty: build_ty(&naga_module.types[constant.ty], gctx, &def_paths),
                     init: build_expression(&naga_module.const_expressions[constant.init]),
+                    comment: None,
                 });
             }
         }
@@ -101,6 +102,7 @@ pub fn compile(
                     init: var
                         .init
                         .map(|init| build_expression(&naga_module.const_expressions[init])),
+                    comment: None,
                 });
             }
         }
@@ -116,8 +118,10 @@ pub fn compile(
                                 name: Ident::from(member.name.clone()),
                                 ty: build_ty(&naga_module.types[member.ty], gctx, &def_paths),
                                 binding: member.binding.as_ref().map(build_binding),
+                                comment: None,
                             })
                             .collect(),
+                        comment: None,
                     });
                 }
             }
@@ -140,6 +144,7 @@ pub fn compile(
                         .result
                         .as_ref()
                         .map(|res| build_ty(&naga_module.types[res.ty], gctx, &def_paths)),
+                    comment: None,
                 });
             }
         }

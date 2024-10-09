@@ -2,6 +2,9 @@ mod common;
 mod download;
 mod post_process;
 
+#[cfg(feature = "backend_v0_15")]
+mod backend_v0_15;
+
 #[cfg(feature = "backend_v0_14")]
 mod backend_v0_14;
 
@@ -21,8 +24,34 @@ use docs::{Doc, IndexMap, ShaderDefValue, Version};
 
 use std::path::Path;
 
+pub struct CrateLocalPath<'a> {
+    pub path: &'a Path,
+}
+
+pub struct CratesIoIdentifier<'a> {
+    pub name: &'a str,
+}
+
+pub enum CrateLocation<'a> {
+    Local(CrateLocalPath<'a>),
+    CratesIo(CratesIoIdentifier<'a>),
+}
+
+impl CrateLocation<'_> {
+    pub fn name(&self) -> &str {
+        match self {
+            CrateLocation::Local(crate_local_path) => {
+                crate_local_path.path.file_name().unwrap().to_str().unwrap()
+            }
+            CrateLocation::CratesIo(crate_name) => crate_name.name,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum CompilerBackend {
+    #[cfg(feature = "backend_v0_15")]
+    V0_15,
     #[cfg(feature = "backend_v0_14")]
     V0_14,
     #[cfg(feature = "backend_v0_13")]
@@ -38,6 +67,8 @@ pub enum CompilerBackend {
 impl CompilerBackend {
     fn naga_oil_minor(self) -> u64 {
         match self {
+            #[cfg(feature = "backend_v0_15")]
+            CompilerBackend::V0_15 => 15,
             #[cfg(feature = "backend_v0_14")]
             CompilerBackend::V0_14 => 14,
             #[cfg(feature = "backend_v0_13")]
@@ -53,7 +84,7 @@ impl CompilerBackend {
 }
 
 pub fn compile(
-    root_crate_name: &str,
+    root_crate_location: &CrateLocation,
     root_crate_version: Version,
     package_filter: impl Fn(&str) -> bool,
     shader_def_values: IndexMap<String, ShaderDefValue>,
@@ -61,7 +92,7 @@ pub fn compile(
     backend: CompilerBackend,
 ) -> Result<Doc, Box<dyn std::error::Error>> {
     let shader_sources = download::download_shaders(
-        root_crate_name,
+        root_crate_location,
         &root_crate_version,
         package_filter,
         cache_path,
@@ -70,6 +101,8 @@ pub fn compile(
 
     // CompileFn type is necessary to avoid compiler error if no backend is enabled
     let compile: CompileFn = match backend {
+        #[cfg(feature = "backend_v0_15")]
+        CompilerBackend::V0_15 => backend_v0_15::compile,
         #[cfg(feature = "backend_v0_14")]
         CompilerBackend::V0_14 => backend_v0_14::compile,
         #[cfg(feature = "backend_v0_13")]
@@ -83,17 +116,16 @@ pub fn compile(
     };
 
     let mut doc = compile(
-        root_crate_name,
+        root_crate_location.name(),
         root_crate_version,
         shader_def_values.clone(),
         shader_sources,
     )?;
-
     post_process::post_process(&mut doc);
 
     for key in shader_def_values.keys() {
         if !doc.root.shader_defs.contains(key) {
-            println!("Warning: shader def `{}` was provived but not used", key);
+            println!("Warning: shader def `{}` was provided but not used", key);
         }
     }
 

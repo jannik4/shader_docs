@@ -1,4 +1,4 @@
-use crate::CompilerBackend;
+use crate::{CompilerBackend, CrateLocation};
 use cargo_metadata::MetadataCommand;
 use docs::Version;
 use regex::Regex;
@@ -12,6 +12,7 @@ use std::{
 };
 use tar::Archive;
 
+#[derive(Debug)]
 pub struct ShaderSource {
     pub path: PathBuf,
     pub source: String,
@@ -20,15 +21,14 @@ pub struct ShaderSource {
 }
 
 pub fn download_shaders(
-    root_crate_name: &str,
+    root_crate_location: &CrateLocation,
     root_crate_version: &Version,
     package_filter: impl Fn(&str) -> bool,
     cache_path: &Path,
     backend: CompilerBackend,
 ) -> Result<Vec<ShaderSource>, Box<dyn std::error::Error>> {
-    let manifest_path = download_crate(cache_path, root_crate_name, root_crate_version)?;
+    let manifest_path = retrieve_crate(cache_path, root_crate_location, root_crate_version)?;
     let metadata = MetadataCommand::new().manifest_path(manifest_path).exec()?;
-
     let mut shaders = Vec::new();
 
     for package in &metadata.packages {
@@ -106,6 +106,61 @@ pub fn download_shaders(
     }
 
     Ok(shaders)
+}
+
+fn retrieve_crate(
+    cache_path: &Path,
+    crate_location: &CrateLocation,
+    version: &Version,
+) -> Result<PathBuf, Box<dyn std::error::Error>> {
+    match crate_location {
+        CrateLocation::Local(crate_local_path) => {
+            let name = crate_local_path
+                .path
+                .file_name()
+                .ok_or_else(|| {
+                    format!(
+                        "Could not find the name of local path: {:?}.",
+                        crate_local_path.path
+                    )
+                })?
+                .to_str()
+                .ok_or_else(|| {
+                    format!(
+                        "Could not understand the name of local path: {:?}.",
+                        crate_local_path.path
+                    )
+                })?;
+            let crate_path = cache_path.join(format!("{name}@{version}"));
+            let manifest_path = crate_path.join(format!("{name}-{version}/Cargo.toml"));
+
+            fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> std::io::Result<()> {
+                if !matches!(fs::exists(&dst), Ok(true)) {
+                    fs::create_dir_all(&dst)?;
+                }
+                for entry in fs::read_dir(src)? {
+                    let entry = entry?;
+                    let ty = entry.file_type()?;
+                    if ty.is_dir() {
+                        if entry.file_name() == ".git" {
+                            continue;
+                        }
+                        copy_dir_all(entry.path(), dst.as_ref().join(entry.file_name()))?;
+                    } else if ty.is_file() {
+                        fs::copy(entry.path(), dst.as_ref().join(entry.file_name()))?;
+                    }
+                }
+                Ok(())
+            }
+            copy_dir_all(
+                crate_local_path.path,
+                crate_path.join(format!("{name}-{version}")),
+            )?;
+
+            Ok(manifest_path)
+        }
+        CrateLocation::CratesIo(crate_name) => download_crate(cache_path, crate_name.name, version),
+    }
 }
 
 fn download_crate(

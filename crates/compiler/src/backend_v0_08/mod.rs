@@ -103,6 +103,7 @@ pub fn compile(
                         }
                     },
                     init: build_expression(&constant.inner),
+                    comment: None,
                 });
             }
         }
@@ -122,6 +123,7 @@ pub fn compile(
                     init: var
                         .init
                         .map(|init| build_expression(&naga_module.constants[init].inner)),
+                    comment: None,
                 });
             }
         }
@@ -142,8 +144,10 @@ pub fn compile(
                                     &def_paths,
                                 ),
                                 binding: member.binding.as_ref().map(build_binding),
+                                comment: None,
                             })
                             .collect(),
+                        comment: None,
                     });
                 }
             }
@@ -175,6 +179,7 @@ pub fn compile(
                             &def_paths,
                         )
                     }),
+                    comment: None,
                 });
             }
         }

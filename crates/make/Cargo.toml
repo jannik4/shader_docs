@@ -4,9 +4,11 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 
+
 [dependencies]
 docs = { path = "../docs" }
 compiler = { path = "../compiler", features = [
+    "backend_v0_15",
     "backend_v0_14",
     "backend_v0_13",
     "backend_v0_11",

@@ -3,12 +3,14 @@ use std::fmt;
 pub use indexmap::{IndexMap, IndexSet};
 pub use semver::Version;
 
+#[derive(Debug)]
 pub struct Doc {
     pub version: Version,
     pub root: Module,
     pub compiled_with: IndexMap<String, ShaderDefValue>,
 }
 
+#[derive(Debug)]
 pub struct Module {
     pub name: String,
     pub source_url: Option<String>,
@@ -18,6 +20,21 @@ pub struct Module {
     pub structs: Vec<Struct>,
     pub functions: Vec<Function>,
     pub shader_defs: IndexSet<String>,
+}
+
+impl Module {
+    pub fn new(name: String) -> Module {
+        Self {
+            name,
+            source_url: None,
+            modules: Vec::new(),
+            constants: Vec::new(),
+            global_variables: Vec::new(),
+            structs: Vec::new(),
+            functions: Vec::new(),
+            shader_defs: IndexSet::new(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -37,20 +54,29 @@ impl fmt::Display for ShaderDefValue {
     }
 }
 
+#[derive(Debug)]
 pub struct Constant {
     pub name: Ident,
     pub ty: Type,
     pub init: Expression,
+    /// Comment is stored as a single string, without starting or trailing comment markers.
+    /// It is fair to expect markdown.
+    pub comment: Option<String>,
 }
 
+#[derive(Debug)]
 pub struct GlobalVariable {
     pub name: Ident,
     pub space: AddressSpace,
     pub binding: Option<ResourceBinding>,
     pub ty: Type,
     pub init: Option<Expression>,
+    /// Comment is stored as a single string, without starting or trailing comment markers.
+    /// It is fair to expect markdown.
+    pub comment: Option<String>,
 }
 
+#[derive(Debug)]
 pub enum AddressSpace {
     Function,
     Private,
@@ -81,11 +107,13 @@ impl fmt::Display for AddressSpace {
     }
 }
 
+#[derive(Debug)]
 pub struct ResourceBinding {
     pub group: u32,
     pub binding: u32,
 }
 
+#[derive(Debug)]
 pub enum Expression {
     Literal(Literal),
     Unknown,
@@ -100,6 +128,7 @@ impl fmt::Display for Expression {
     }
 }
 
+#[derive(Debug)]
 pub enum Literal {
     F64(f64),
     F32(f32),
@@ -130,17 +159,26 @@ impl fmt::Display for Literal {
     }
 }
 
+#[derive(Debug)]
 pub struct Struct {
     pub name: Ident,
     pub members: Vec<StructMember>,
+    /// Comment is stored as a single string, without starting or trailing comment markers.
+    /// It is fair to expect markdown.
+    pub comment: Option<String>,
 }
 
+#[derive(Debug)]
 pub struct StructMember {
     pub name: Ident,
     pub ty: Type,
     pub binding: Option<Binding>,
+    /// Comment is stored as a single string, without starting or trailing comment markers.
+    /// It is fair to expect markdown.
+    pub comment: Option<String>,
 }
 
+#[derive(Debug)]
 pub enum Type {
     Named {
         name: String,
@@ -159,12 +197,17 @@ pub enum Type {
     Unnamed,
 }
 
+#[derive(Debug)]
 pub struct Function {
     pub name: Ident,
     pub arguments: Vec<FunctionArgument>,
     pub ret: Option<Type>,
+    /// Comment is stored as a single string, without starting or trailing comment markers.
+    /// It is fair to expect markdown.
+    pub comment: Option<String>,
 }
 
+#[derive(Debug)]
 pub struct FunctionArgument {
     pub name: Ident,
     pub ty: Type,
@@ -198,6 +241,7 @@ impl fmt::Display for Ident {
     }
 }
 
+#[derive(Debug)]
 pub enum Binding {
     BuiltIn(BuiltIn),
     Location {

@@ -38,16 +38,7 @@ pub fn find_or_create_module<'a>(
         module = match idx {
             Some(idx) => &mut module.modules[idx],
             None => {
-                module.modules.push(Module {
-                    name: segment.to_string(),
-                    source_url: None,
-                    modules: Vec::new(),
-                    constants: Vec::new(),
-                    global_variables: Vec::new(),
-                    structs: Vec::new(),
-                    functions: Vec::new(),
-                    shader_defs: IndexSet::new(),
-                });
+                module.modules.push(Module::new(segment.to_string()));
                 module.modules.last_mut().unwrap()
             }
         };
