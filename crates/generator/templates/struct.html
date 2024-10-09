@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ functions::to_html(struct_.comment)|safe }}
 <pre class="code-block">
 <code>struct {{ struct_.name }} {
     {%- for member in struct_.members %}
@@ -8,4 +9,14 @@
     {%- endfor %}
 }</code>
 </pre>
+
+<h2 class="item-list-title">Fields</h2>
+{%- for member in struct_.members %}
+<code>{{ self::display_binding(member.binding.as_ref()) }}{{ member.name }}: {{ self::render_type(member.ty,
+    module_path.level)|safe }}</code>
+<div class="doc-block">
+    {{ functions::to_html(member.comment)|safe }}
+</div>
+{%- endfor %}
+
 {% endblock %}

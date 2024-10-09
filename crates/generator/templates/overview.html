@@ -15,7 +15,14 @@
 <h3 class="item-list-title">Constants</h3>
 <ul class="item-list">
     {% for constant in module.constants %}
-    <li><a class="const" href="const.{{ constant.name }}.html">{{ constant.name }}</a></li>
+    <li>
+        <div class="item-name"><a class="const" href="const.{{ constant.name }}.html">{{ constant.name }}</a></div>
+        <div class="desc docblock-short">
+            {% if constant.comment.is_some() %}
+            {{ functions::to_html(constant.comment)|safe }}
+            {% endif %}
+        </div>
+    </li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -24,7 +31,14 @@
 <h3 class="item-list-title">Global Variables</h3>
 <ul class="item-list">
     {% for var in module.global_variables %}
-    <li><a class="var" href="var.{{ var.name }}.html">{{ var.name }}</a></li>
+    <li>
+        <div class="item-name"><a class="var" href="var.{{ var.name }}.html">{{ var.name }}</a></div>
+        <div class="desc docblock-short">
+            {% if var.comment.is_some() %}
+            {{ functions::to_html(var.comment)|safe }}
+            {% endif %}
+        </div>
+    </li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -33,7 +47,13 @@
 <h3 class="item-list-title">Structs</h3>
 <ul class="item-list">
     {% for struct_ in module.structs %}
-    <li><a class="struct" href="struct.{{ struct_.name }}.html">{{ struct_.name }}</a></li>
+    <li>
+        <div class="item-name"><a class="struct" href="struct.{{ struct_.name }}.html">{{ struct_.name }}</a></div>
+        <div class="desc docblock-short">{% if struct_.comment.is_some() %}
+            {{ functions::to_html(struct_.comment)|safe }}
+            {% endif %}
+        </div>
+    </li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -42,7 +62,12 @@
 <h3 class="item-list-title">Functions</h3>
 <ul class="item-list">
     {% for function in module.functions %}
-    <li><a class="fn" href="fn.{{ function.name }}.html">{{ function.name }}</a></li>
+    <li>
+        <div class="item-name"><a class="fn" href="fn.{{ function.name }}.html">{{ function.name }}</a></div>
+        {% if function.comment.is_some() %}
+        <div class="desc docblock-short">{{ functions::to_html(function.comment)|safe }}</div>
+        {% endif %}
+    </li>
     {% endfor %}
 </ul>
 {% endif %}

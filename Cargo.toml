@@ -1,3 +1,7 @@
 [workspace]
 resolver = "2"
 members = ["crates/*"]
+
+[patch.crates-io]
+naga_oil = { path = "../naga_oil" }
+naga = { path = "../wgpu/naga" }
