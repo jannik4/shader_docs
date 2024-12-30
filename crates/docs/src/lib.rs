@@ -235,6 +235,7 @@ pub enum BuiltIn {
     SubgroupId,
     SubgroupSize,
     SubgroupInvocationId,
+    DrawID,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -249,4 +250,6 @@ pub enum Sampling {
     Center,
     Centroid,
     Sample,
+    First,
+    Either,
 }

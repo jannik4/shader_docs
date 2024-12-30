@@ -442,9 +442,8 @@ fn builtin_str(built_in: &BuiltIn) -> Result<&'static str, Box<dyn std::error::E
         | BuiltIn::CullDistance
         | BuiltIn::PointSize
         | BuiltIn::PointCoord
-        | BuiltIn::WorkGroupSize => {
-            return Err(format!("unsupported built-in: {:?}", built_in).into())
-        }
+        | BuiltIn::WorkGroupSize
+        | BuiltIn::DrawID => return Err(format!("unsupported built-in: {:?}", built_in).into()),
     })
 }
 
@@ -461,5 +460,7 @@ const fn sampling_str(sampling: Sampling) -> &'static str {
         Sampling::Center => "",
         Sampling::Centroid => "centroid",
         Sampling::Sample => "sample",
+        Sampling::First => "First",
+        Sampling::Either => "Either",
     }
 }
