@@ -145,6 +145,13 @@ fn find_defs(source: &str) -> HashSet<String> {
         }
         RE.get_or_init(init)
     }
+    fn def_regex() -> &'static Regex {
+        static RE: OnceLock<Regex> = OnceLock::new();
+        fn init() -> Regex {
+            Regex::new(r"#\s*([\w|\d|_]+)").unwrap()
+        }
+        RE.get_or_init(init)
+    }
     fn def_regex_delimited() -> &'static Regex {
         static RE: OnceLock<Regex> = OnceLock::new();
         fn init() -> Regex {
@@ -156,6 +163,7 @@ fn find_defs(source: &str) -> HashSet<String> {
     let ifdef_regex = ifdef_regex();
     let ifndef_regex = ifndef_regex();
     let ifop_regex = ifop_regex();
+    let _def_regex = def_regex();
     let def_regex_delimited = def_regex_delimited();
 
     let mut defs = HashSet::new();
@@ -173,6 +181,11 @@ fn find_defs(source: &str) -> HashSet<String> {
             let def = caps.get(2).unwrap().as_str();
             defs.insert(def.to_string());
         }
+        // FIXME: Too many false positives
+        // for caps in def_regex.captures_iter(line) {
+        //     let def = caps.get(1).unwrap().as_str();
+        //     defs.insert(def.to_string());
+        // }
         for caps in def_regex_delimited.captures_iter(line) {
             let def = caps.get(1).unwrap().as_str();
             defs.insert(def.to_string());
