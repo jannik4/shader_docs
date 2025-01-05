@@ -183,11 +183,16 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/render/shadows.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.15.1/source/src/render/shadows.wgsl" target="_blank">source</a>
             
 
             
-<pre class="code-block"><code>fn fetch_spot_shadow(light_id: u32, frag_position: vec4&lt;f32&gt;, surface_normal: vec3&lt;f32&gt;) -> f32</code>
+<pre class="code-block"><code>fn fetch_spot_shadow(
+    light_id: u32, 
+    frag_position: vec4&lt;f32&gt;, 
+    surface_normal: vec3&lt;f32&gt;, 
+    near_z: f32
+) -> f32</code>
 </pre>
 
         </div>

@@ -183,15 +183,20 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.14.0/source/src/meshlet/meshlet_bindings.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.15.1/source/src/meshlet/meshlet_bindings.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
 <code>struct Meshlet {
-    start_vertex_id: u32,
+    start_vertex_position_bit: u32,
+    start_vertex_attribute_id: u32,
     start_index_id: u32,
-    triangle_count: u32
+    packed_a: u32,
+    packed_b: u32,
+    min_vertex_position_channel_x: f32,
+    min_vertex_position_channel_y: f32,
+    min_vertex_position_channel_z: f32
 }</code>
 </pre>
 
