@@ -7,92 +7,116 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let docs = vec![
         compiler::compile(
             "bevy",
+            Version::new(0, 15, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_15(),
+            cache_path,
+            compiler::CompilerBackend::V0_16,
+        )?,
+        compiler::compile(
+            "bevy",
             Version::new(0, 15, 0),
             |name| name.starts_with("bevy"),
             shader_def_values_0_15(),
             cache_path,
-            compiler::CompilerBackend::V0_15,
-        )?, /*
-            compiler::compile(
-                "bevy",
-                Version::new(0, 14, 0),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_14(),
-                cache_path,
-                compiler::CompilerBackend::V0_14,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 13, 2),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_13(),
-                cache_path,
-                compiler::CompilerBackend::V0_13,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 13, 1),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_13(),
-                cache_path,
-                compiler::CompilerBackend::V0_13,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 13, 0),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_13(),
-                cache_path,
-                compiler::CompilerBackend::V0_13,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 12, 1),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_12(),
-                cache_path,
-                compiler::CompilerBackend::V0_10,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 12, 0),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_12(),
-                cache_path,
-                compiler::CompilerBackend::V0_10,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 11, 3),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_11(),
-                cache_path,
-                compiler::CompilerBackend::V0_08,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 11, 2),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_11(),
-                cache_path,
-                compiler::CompilerBackend::V0_08,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 11, 1),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_11(),
-                cache_path,
-                compiler::CompilerBackend::V0_08,
-            )?,
-            compiler::compile(
-                "bevy",
-                Version::new(0, 11, 0),
-                |name| name.starts_with("bevy"),
-                shader_def_values_0_11(),
-                cache_path,
-                compiler::CompilerBackend::V0_08,
-            )?,*/
+            compiler::CompilerBackend::V0_16,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 14, 2),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_14(),
+            cache_path,
+            compiler::CompilerBackend::V0_14,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 14, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_14(),
+            cache_path,
+            compiler::CompilerBackend::V0_14,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 14, 0),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_14(),
+            cache_path,
+            compiler::CompilerBackend::V0_14,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 13, 2),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 13, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 13, 0),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_13(),
+            cache_path,
+            compiler::CompilerBackend::V0_13,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 12, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_12(),
+            cache_path,
+            compiler::CompilerBackend::V0_10,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 12, 0),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_12(),
+            cache_path,
+            compiler::CompilerBackend::V0_10,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 11, 3),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_11(),
+            cache_path,
+            compiler::CompilerBackend::V0_08,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 11, 2),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_11(),
+            cache_path,
+            compiler::CompilerBackend::V0_08,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 11, 1),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_11(),
+            cache_path,
+            compiler::CompilerBackend::V0_08,
+        )?,
+        compiler::compile(
+            "bevy",
+            Version::new(0, 11, 0),
+            |name| name.starts_with("bevy"),
+            shader_def_values_0_11(),
+            cache_path,
+            compiler::CompilerBackend::V0_08,
+        )?,
     ];
 
     // Generate docs
@@ -103,17 +127,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-// TODO: Check list for bevy 0.15
+// TODO: More shader defs available on 0.15
 fn shader_def_values_0_15() -> IndexMap<String, ShaderDefValue> {
     use ShaderDefValue::*;
 
     [
-        // From 0.14:
         ("AVAILABLE_STORAGE_BUFFER_BINDINGS", UInt(3)),
         ("BLEND_MULTIPLY", Bool(true)),
         ("BLEND_PREMULTIPLIED_ALPHA", Bool(true)),
         ("DEFERRED_PREPASS", Bool(true)),
         ("DEPTH_PREPASS", Bool(true)),
+        ("DIRECTIONAL_LIGHT_SHADOW_MAP_DEBUG_CASCADES", Bool(true)),
         ("ENVIRONMENT_MAP", Bool(true)),
         ("IRRADIANCE_VOLUME", Bool(true)),
         ("IRRADIANCE_VOLUMES_ARE_USABLE", Bool(true)),
@@ -122,7 +146,7 @@ fn shader_def_values_0_15() -> IndexMap<String, ShaderDefValue> {
         ("MAX_DIRECTIONAL_LIGHTS", UInt(10)),
         ("MORPH_TARGETS", Bool(true)),
         ("MOTION_VECTOR_PREPASS", Bool(true)),
-        // ("MULTISAMPLED", Bool(true)), causes error from 0.14.
+        // ("MULTISAMPLED", Bool(true)), causes error
         ("NORMAL_PREPASS", Bool(true)),
         ("NORMAL_PREPASS_OR_DEFERRED_PREPASS", Bool(true)),
         ("PBR_TRANSMISSION_TEXTURES_SUPPORTED", Bool(true)),
@@ -144,8 +168,6 @@ fn shader_def_values_0_15() -> IndexMap<String, ShaderDefValue> {
         ("VERTEX_UVS", Bool(true)),
         ("VERTEX_UVS_A", Bool(true)),
         ("VERTEX_UVS_B", Bool(true)),
-        // New for 0.15
-        ("DIRECTIONAL_LIGHT_SHADOW_MAP_DEBUG_CASCADES", Bool(true)),
     ]
     .into_iter()
     .map(|(key, value)| (key.to_string(), value))

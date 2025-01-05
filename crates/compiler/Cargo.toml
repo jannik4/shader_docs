@@ -30,7 +30,7 @@ naga_v0_12 = { package = "naga", version = "0.12.3", optional = true }
 [features]
 default = []
 
-backend_v0_15 = ["dep:naga_oil_v0_16", "dep:naga_v23_1"] # bevy 0.15.x
+backend_v0_16 = ["dep:naga_oil_v0_16", "dep:naga_v23_1"] # bevy 0.15.x
 backend_v0_14 = ["dep:naga_oil_v0_14", "dep:naga_v0_20"] # bevy 0.14.x
 backend_v0_13 = ["dep:naga_oil_v0_13", "dep:naga_v0_19"] # bevy 0.13.x
 backend_v0_11 = ["dep:naga_oil_v0_11", "dep:naga_v0_14"] # ...

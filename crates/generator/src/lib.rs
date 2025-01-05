@@ -460,7 +460,7 @@ const fn sampling_str(sampling: Sampling) -> &'static str {
         Sampling::Center => "",
         Sampling::Centroid => "centroid",
         Sampling::Sample => "sample",
-        Sampling::First => "First",
-        Sampling::Either => "Either",
+        Sampling::First => "first",
+        Sampling::Either => "either",
     }
 }

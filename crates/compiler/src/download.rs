@@ -1,5 +1,5 @@
 use crate::CompilerBackend;
-use cargo_metadata::MetadataCommand;
+use cargo_metadata::{MetadataCommand, Package};
 use docs::Version;
 use regex::Regex;
 use reqwest::blocking::Client;
@@ -74,24 +74,7 @@ pub fn download_shaders(
                             url
                         };
 
-                        // Fixes: https://github.com/bevyengine/bevy/issues/14139
-                        let code = r#"fn hsv_to_rgb(hsv: vec3<f32>) -> vec3<f32> {
-    let n = vec3(5.0, 3.0, 1.0);
-    let k = (n + hsv.x / FRAC_PI_3) % 6.0;
-    return hsv.z - hsv.z * hsv.y * max(vec3(0.0), min(k, min(4.0 - k, vec3(1.0))));
-}"#;
-                        let source = if source.contains(code) {
-                            source.replace(
-                                code,
-                                r#"fn hsv_to_rgb(x: f32, y: f32, z: f32) -> vec3<f32> {
-    let n = vec3(5.0, 3.0, 1.0);
-    let k = (n + x / FRAC_PI_3) % 6.0;
-    return z - z * y * max(vec3(0.0), min(k, min(4.0 - k, vec3(1.0))));
-}"#,
-                            )
-                        } else {
-                            source
-                        };
+                        let source = fix_bevy_14139(source, package);
 
                         shaders.push(ShaderSource {
                             path,
@@ -197,4 +180,29 @@ fn find_defs(source: &str) -> HashSet<String> {
     }
 
     defs
+}
+
+// Fixes: https://github.com/bevyengine/bevy/issues/14139
+fn fix_bevy_14139(source: String, package: &Package) -> String {
+    if !(package.name == "bevy_render" && package.version == Version::new(0, 14, 0)) {
+        return source;
+    }
+
+    let code = r#"fn hsv_to_rgb(hsv: vec3<f32>) -> vec3<f32> {
+    let n = vec3(5.0, 3.0, 1.0);
+    let k = (n + hsv.x / FRAC_PI_3) % 6.0;
+    return hsv.z - hsv.z * hsv.y * max(vec3(0.0), min(k, min(4.0 - k, vec3(1.0))));
+}"#;
+    if source.contains(code) {
+        source.replace(
+            code,
+            r#"fn hsv_to_rgb(x: f32, y: f32, z: f32) -> vec3<f32> {
+    let n = vec3(5.0, 3.0, 1.0);
+    let k = (n + x / FRAC_PI_3) % 6.0;
+    return z - z * y * max(vec3(0.0), min(k, min(4.0 - k, vec3(1.0))));
+}"#,
+        )
+    } else {
+        source
+    }
 }
