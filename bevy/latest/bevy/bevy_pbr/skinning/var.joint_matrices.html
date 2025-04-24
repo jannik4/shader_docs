@@ -183,13 +183,12 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.15.1/source/src/render/skinning.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.16.0/source/src/render/skinning.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
-<code>@group(1) @binding(1) var&lt;uniform&gt; joint_matrices: <a class="struct"
-    href="../../bevy_pbr/mesh_types/struct.SkinnedMesh.html">SkinnedMesh</a>;</code>
+<code>@group(1) @binding(1) var&lt;storage&gt; joint_matrices: array&lt;mat4x4&lt;f32&gt;&gt;;</code>
 </pre>
 
         </div>
