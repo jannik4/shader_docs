@@ -215,7 +215,7 @@ fn gen_module(
 
     for function in &module.functions {
         let module_path =
-            module_path.extend(&function.name.to_string(), "#", ItemKind::Function, false);
+            module_path.extend(function.name.to_string(), "#", ItemKind::Function, false);
         let template = FunctionTemplate {
             base,
             title: &function.name.to_string(),
