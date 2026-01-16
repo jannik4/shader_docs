@@ -96,6 +96,10 @@ pub fn build_ty_inner(
                 naga::ArraySize::Dynamic => {
                     docs::Type::ArrayDynamic(Box::new(build_ty(member_type, gctx, def_paths)))
                 }
+                naga::ArraySize::Pending(_handle) => {
+                    // TODO: should be ArrayPending...
+                    docs::Type::ArrayDynamic(Box::new(build_ty(member_type, gctx, def_paths)))
+                }
             };
         }
         TypeInner::BindingArray { base, size } => {
@@ -111,6 +115,14 @@ pub fn build_ty_inner(
                     gctx,
                     def_paths,
                 ))),
+                naga::ArraySize::Pending(_handle) => {
+                    // TODO: should be ArrayPending...
+                    docs::Type::BindingArrayDynamic(Box::new(build_ty(
+                        member_type,
+                        gctx,
+                        def_paths,
+                    )))
+                }
             };
         }
         TypeInner::Matrix {
@@ -164,12 +176,14 @@ pub fn build_ty_inner(
                 None => base,
             };
         }
-        TypeInner::AccelerationStructure => "acceleration_structure".to_string(),
+        TypeInner::AccelerationStructure { vertex_return: _ } => {
+            "acceleration_structure".to_string()
+        }
         TypeInner::Struct { .. } => {
             // TODO: Actually output the struct?
             "struct".to_string()
         }
-        TypeInner::RayQuery => {
+        TypeInner::RayQuery { .. } => {
             // TODO: ???
             "ray_query".to_string()
         }
@@ -278,6 +292,7 @@ const fn storage_format_str(format: naga::StorageFormat) -> &'static str {
         Sf::Rg16Snorm => "rg16snorm",
         Sf::Rgba16Unorm => "rgba16unorm",
         Sf::Rgba16Snorm => "rgba16snorm",
+        Sf::R64Uint => "r64uint",
     }
 }
 

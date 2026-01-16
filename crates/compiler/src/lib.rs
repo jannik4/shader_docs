@@ -2,6 +2,12 @@ mod common;
 mod download;
 mod post_process;
 
+#[cfg(feature = "backend_v0_20")]
+mod backend_v0_20;
+
+#[cfg(feature = "backend_v0_19")]
+mod backend_v0_19;
+
 #[cfg(feature = "backend_v0_17")]
 mod backend_v0_17;
 
@@ -29,6 +35,10 @@ use std::path::Path;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum CompilerBackend {
+    #[cfg(feature = "backend_v0_20")]
+    V0_20,
+    #[cfg(feature = "backend_v0_19")]
+    V0_19,
     #[cfg(feature = "backend_v0_17")]
     V0_17,
     #[cfg(feature = "backend_v0_16")]
@@ -48,6 +58,10 @@ pub enum CompilerBackend {
 impl CompilerBackend {
     fn naga_oil_minor(self) -> u64 {
         match self {
+            #[cfg(feature = "backend_v0_20")]
+            CompilerBackend::V0_20 => 20,
+            #[cfg(feature = "backend_v0_19")]
+            CompilerBackend::V0_19 => 19,
             #[cfg(feature = "backend_v0_17")]
             CompilerBackend::V0_17 => 17,
             #[cfg(feature = "backend_v0_16")]
@@ -84,6 +98,10 @@ pub fn compile(
 
     // CompileFn type is necessary to avoid compiler error if no backend is enabled
     let compile: CompileFn = match backend {
+        #[cfg(feature = "backend_v0_20")]
+        CompilerBackend::V0_20 => backend_v0_20::compile,
+        #[cfg(feature = "backend_v0_19")]
+        CompilerBackend::V0_19 => backend_v0_19::compile,
         #[cfg(feature = "backend_v0_17")]
         CompilerBackend::V0_17 => backend_v0_17::compile,
         #[cfg(feature = "backend_v0_16")]
@@ -111,7 +129,7 @@ pub fn compile(
 
     for key in shader_def_values.keys() {
         if !doc.root.shader_defs.contains(key) {
-            println!("Warning: shader def `{}` was provived but not used", key);
+            println!("Warning: shader def `{}` was provided but not used", key);
         }
     }
 

@@ -7,6 +7,8 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 docs = { path = "../docs" }
 compiler = { path = "../compiler", features = [
+    "backend_v0_20",
+    "backend_v0_19",
     "backend_v0_17",
     "backend_v0_16",
     "backend_v0_14",

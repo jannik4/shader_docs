@@ -103,6 +103,7 @@ impl fmt::Display for Expression {
 pub enum Literal {
     F64(f64),
     F32(f32),
+    F16(f32),
     U32(u32),
     I32(i32),
     U64(u64),
@@ -118,6 +119,7 @@ impl fmt::Display for Literal {
         match self {
             Literal::F64(value) => write!(f, "{}", value),
             Literal::F32(value) => write!(f, "{}", value),
+            Literal::F16(value) => write!(f, "{}", value),
             Literal::U32(value) => write!(f, "{}", value),
             Literal::I32(value) => write!(f, "{}", value),
             Literal::U64(value) => write!(f, "{}", value),
