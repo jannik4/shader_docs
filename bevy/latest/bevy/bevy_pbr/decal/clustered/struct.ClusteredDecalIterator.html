@@ -183,13 +183,16 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.16.0/source/src/decal/clustered.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/decal/clustered.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
 <code>struct ClusteredDecalIterator {
-    texture_index: i32,
+    base_color_texture_index: i32,
+    normal_map_texture_index: i32,
+    metallic_roughness_texture_index: i32,
+    emissive_texture_index: i32,
     uv: vec2&lt;f32&gt;,
     tag: u32,
     decal_index_offset: i32,

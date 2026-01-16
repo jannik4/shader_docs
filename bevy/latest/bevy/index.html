@@ -200,6 +200,8 @@
     
     <li><a class="module" href="bevy_ui/index.html">bevy_ui</a></li>
     
+    <li><a class="module" href="bevy_ui_render/index.html">bevy_ui_render</a></li>
+    
 </ul>
 
 
@@ -218,6 +220,10 @@
     <li class="def">0</li>
     
     <li class="def">ALPHA_TO_COVERAGE</li>
+    
+    <li class="def">ANTI_ALIAS</li>
+    
+    <li class="def">ATMOSPHERE</li>
     
     <li class="def">AVAILABLE_STORAGE_BUFFER_BINDINGS</li>
     
@@ -247,6 +253,8 @@
     
     <li class="def">ENVIRONMENT_MAP</li>
     
+    <li class="def">FIRST_CULLING_PASS</li>
+    
     <li class="def">HUE_ROTATE</li>
     
     <li class="def">IRRADIANCE_VOLUME</li>
@@ -257,7 +265,11 @@
     
     <li class="def">LIGHTMAP_BICUBIC_SAMPLING</li>
     
+    <li class="def">LIGHT_TEXTURES</li>
+    
     <li class="def">LOAD_PREPASS_NORMALS</li>
+    
+    <li class="def">MATERIAL_BIND_GROUP</li>
     
     <li class="def">MAX_CASCADES_PER_LIGHT</li>
     
@@ -265,9 +277,13 @@
     
     <li class="def">MAY_DISCARD</li>
     
-    <li class="def">MESHLET_CULLING_PASS</li>
+    <li class="def">MESHLET_BVH_CULLING_PASS</li>
     
-    <li class="def">MESHLET_FILL_CLUSTER_BUFFERS_PASS</li>
+    <li class="def">MESHLET_CLUSTER_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_FIRST_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_INSTANCE_CULLING_PASS</li>
     
     <li class="def">MESHLET_MESH_MATERIAL_PASS</li>
     
@@ -399,6 +415,8 @@
     
     <li class="def">UNCLIPPED_DEPTH_ORTHO_EMULATION</li>
     
+    <li class="def">USE_DEPTH_SAMPLERS</li>
+    
     <li class="def">VERTEX_COLORS</li>
     
     <li class="def">VERTEX_NORMALS</li>
@@ -457,9 +475,13 @@
     
     <li>LIGHTMAP: true</li>
     
+    <li>MATERIAL_BIND_GROUP: 1u</li>
+    
     <li>MAX_CASCADES_PER_LIGHT: 4u</li>
     
     <li>MAX_DIRECTIONAL_LIGHTS: 10u</li>
+    
+    <li>MESHLET_INSTANCE_CULLING_PASS: true</li>
     
     <li>MORPH_TARGETS: true</li>
     

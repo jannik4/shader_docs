@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.16.0/source/src/atmosphere/functions.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/atmosphere/functions.wgsl" target="_blank">source</a>
             
 
             
@@ -193,6 +193,10 @@
 
 <h3 class="item-list-title">Constants</h3>
 <ul class="item-list">
+    
+    <li><a class="const" href="const.ABSORPTION_DENSITY.html">ABSORPTION_DENSITY</a></li>
+    
+    <li><a class="const" href="const.EPSILON.html">EPSILON</a></li>
     
     <li><a class="const" href="const.FRAC_2_PI.html">FRAC_2_PI</a></li>
     
@@ -204,9 +208,11 @@
     
     <li><a class="const" href="const.MIDPOINT_RATIO.html">MIDPOINT_RATIO</a></li>
     
+    <li><a class="const" href="const.MIN_EXTINCTION.html">MIN_EXTINCTION</a></li>
+    
     <li><a class="const" href="const.ROOT_2.html">ROOT_2</a></li>
     
-    <li><a class="const" href="const.SUN_ANGULAR_SIZE.html">SUN_ANGULAR_SIZE</a></li>
+    <li><a class="const" href="const.SCATTERING_DENSITY.html">SCATTERING_DENSITY</a></li>
     
 </ul>
 
@@ -217,7 +223,9 @@
 <h3 class="item-list-title">Structs</h3>
 <ul class="item-list">
     
-    <li><a class="struct" href="struct.AtmosphereSample.html">AtmosphereSample</a></li>
+    <li><a class="struct" href="struct.RaymarchResult.html">RaymarchResult</a></li>
+    
+    <li><a class="struct" href="struct.RaymarchSegment.html">RaymarchSegment</a></li>
     
 </ul>
 
@@ -225,6 +233,10 @@
 
 <h3 class="item-list-title">Functions</h3>
 <ul class="item-list">
+    
+    <li><a class="fn" href="fn.calculate_visible_sun_ratio.html">calculate_visible_sun_ratio</a></li>
+    
+    <li><a class="fn" href="fn.clamp_to_surface.html">clamp_to_surface</a></li>
     
     <li><a class="fn" href="fn.direction_atmosphere_to_world.html">direction_atmosphere_to_world</a></li>
     
@@ -234,7 +246,9 @@
     
     <li><a class="fn" href="fn.get_local_up.html">get_local_up</a></li>
     
-    <li><a class="fn" href="fn.henyey_greenstein.html">henyey_greenstein</a></li>
+    <li><a class="fn" href="fn.get_raymarch_segment.html">get_raymarch_segment</a></li>
+    
+    <li><a class="fn" href="fn.get_view_position.html">get_view_position</a></li>
     
     <li><a class="fn" href="fn.max_atmosphere_distance.html">max_atmosphere_distance</a></li>
     
@@ -246,15 +260,17 @@
     
     <li><a class="fn" href="fn.ndc_to_uv.html">ndc_to_uv</a></li>
     
-    <li><a class="fn" href="fn.rayleigh.html">rayleigh</a></li>
+    <li><a class="fn" href="fn.raymarch_atmosphere.html">raymarch_atmosphere</a></li>
     
     <li><a class="fn" href="fn.sample_aerial_view_lut.html">sample_aerial_view_lut</a></li>
     
-    <li><a class="fn" href="fn.sample_atmosphere.html">sample_atmosphere</a></li>
+    <li><a class="fn" href="fn.sample_density_lut.html">sample_density_lut</a></li>
     
     <li><a class="fn" href="fn.sample_local_inscattering.html">sample_local_inscattering</a></li>
     
     <li><a class="fn" href="fn.sample_multiscattering_lut.html">sample_multiscattering_lut</a></li>
+    
+    <li><a class="fn" href="fn.sample_scattering_lut.html">sample_scattering_lut</a></li>
     
     <li><a class="fn" href="fn.sample_sky_view_lut.html">sample_sky_view_lut</a></li>
     
@@ -275,8 +291,6 @@
     <li><a class="fn" href="fn.uv_to_ndc.html">uv_to_ndc</a></li>
     
     <li><a class="fn" href="fn.uv_to_ray_direction.html">uv_to_ray_direction</a></li>
-    
-    <li><a class="fn" href="fn.view_radius.html">view_radius</a></li>
     
     <li><a class="fn" href="fn.zenith_azimuth_to_ray_dir.html">zenith_azimuth_to_ray_dir</a></li>
     

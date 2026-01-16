@@ -183,7 +183,7 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.16.0/source/src/meshlet/meshlet_bindings.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/meshlet/meshlet_bindings.wgsl" target="_blank">source</a>
             
 
             
@@ -191,29 +191,61 @@
 
 
 
-<h3 class="item-list-title">Constants</h3>
+
+
+<h3 class="item-list-title">Global Variables</h3>
 <ul class="item-list">
     
-    <li><a class="const" href="const.CENTIMETERS_PER_METER.html">CENTIMETERS_PER_METER</a></li>
+    <li><a class="var" href="var.constants.html">constants</a></li>
+    
+    <li><a class="var" href="var.depth_pyramid.html">depth_pyramid</a></li>
+    
+    <li><a class="var" href="var.meshlet_bvh_cull_count_write.html">meshlet_bvh_cull_count_write</a></li>
+    
+    <li><a class="var" href="var.meshlet_bvh_cull_dispatch.html">meshlet_bvh_cull_dispatch</a></li>
+    
+    <li><a class="var" href="var.meshlet_bvh_cull_queue.html">meshlet_bvh_cull_queue</a></li>
+    
+    <li><a class="var" href="var.meshlet_instance_aabbs.html">meshlet_instance_aabbs</a></li>
+    
+    <li><a class="var" href="var.meshlet_instance_bvh_root_nodes.html">meshlet_instance_bvh_root_nodes</a></li>
+    
+    <li><a class="var" href="var.meshlet_instance_uniforms.html">meshlet_instance_uniforms</a></li>
+    
+    <li><a class="var" href="var.meshlet_second_pass_instance_candidates.html">meshlet_second_pass_instance_candidates</a></li>
+    
+    <li><a class="var" href="var.meshlet_second_pass_instance_count.html">meshlet_second_pass_instance_count</a></li>
+    
+    <li><a class="var" href="var.meshlet_view_instance_visibility.html">meshlet_view_instance_visibility</a></li>
+    
+    <li><a class="var" href="var.previous_view.html">previous_view</a></li>
+    
+    <li><a class="var" href="var.view.html">view</a></li>
     
 </ul>
-
-
 
 
 
 <h3 class="item-list-title">Structs</h3>
 <ul class="item-list">
     
+    <li><a class="struct" href="struct.BvhNode.html">BvhNode</a></li>
+    
+    <li><a class="struct" href="struct.Constants.html">Constants</a></li>
+    
     <li><a class="struct" href="struct.DispatchIndirectArgs.html">DispatchIndirectArgs</a></li>
     
     <li><a class="struct" href="struct.DrawIndirectArgs.html">DrawIndirectArgs</a></li>
     
+    <li><a class="struct" href="struct.InstancedOffset.html">InstancedOffset</a></li>
+    
     <li><a class="struct" href="struct.Meshlet.html">Meshlet</a></li>
     
-    <li><a class="struct" href="struct.MeshletBoundingSphere.html">MeshletBoundingSphere</a></li>
+    <li><a class="struct" href="struct.MeshletAabb.html">MeshletAabb</a></li>
     
-    <li><a class="struct" href="struct.MeshletBoundingSpheres.html">MeshletBoundingSpheres</a></li>
+    <li><a class="struct" href="struct.MeshletAabbErrorOffset.html">MeshletAabbErrorOffset</a></li>
+    
+    <li><a class="struct" href="struct.MeshletCullData.html">MeshletCullData</a></li>
     
 </ul>
 
@@ -221,6 +253,12 @@
 
 <h3 class="item-list-title">Functions</h3>
 <ul class="item-list">
+    
+    <li><a class="fn" href="fn.get_aabb.html">get_aabb</a></li>
+    
+    <li><a class="fn" href="fn.get_aabb_child_offset.html">get_aabb_child_offset</a></li>
+    
+    <li><a class="fn" href="fn.get_aabb_error.html">get_aabb_error</a></li>
     
     <li><a class="fn" href="fn.get_meshlet_triangle_count.html">get_meshlet_triangle_count</a></li>
     
@@ -233,9 +271,13 @@
 <h3 class="item-list-title">Shader Definitions</h3>
 <ul class="item-list">
     
-    <li class="def">MESHLET_CULLING_PASS</li>
+    <li class="def">MESHLET_BVH_CULLING_PASS</li>
     
-    <li class="def">MESHLET_FILL_CLUSTER_BUFFERS_PASS</li>
+    <li class="def">MESHLET_CLUSTER_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_FIRST_CULLING_PASS</li>
+    
+    <li class="def">MESHLET_INSTANCE_CULLING_PASS</li>
     
     <li class="def">MESHLET_MESH_MATERIAL_PASS</li>
     
