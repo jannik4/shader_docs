@@ -183,15 +183,16 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/atmosphere/types.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.19.0/source/src/atmosphere/types.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
 <code>struct Atmosphere {
     ground_albedo: vec3&lt;f32&gt;,
-    bottom_radius: f32,
-    top_radius: f32
+    inner_radius: f32,
+    outer_radius: f32,
+    world_to_atmosphere: mat4x4&lt;f32&gt;
 }</code>
 </pre>
 

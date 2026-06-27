@@ -183,16 +183,20 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/render/mesh_view_types.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.19.0/source/src/render/mesh_view_types.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block">
 <code>struct LightProbe {
     light_from_world_transposed: mat3x4&lt;f32&gt;,
-    cubemap_index: i32,
+    falloff: vec3&lt;f32&gt;,
+    bounding_sphere_radius: f32,
+    parallax_correction_bounds: vec3&lt;f32&gt;,
     intensity: f32,
-    affects_lightmapped_mesh_diffuse: u32
+    world_position: vec3&lt;f32&gt;,
+    cubemap_index: i32,
+    flags: u32
 }</code>
 </pre>
 

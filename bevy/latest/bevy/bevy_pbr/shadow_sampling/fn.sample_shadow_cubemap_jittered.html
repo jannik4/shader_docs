@@ -183,13 +183,14 @@
             </h2>
 
             
-            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.18.0/source/src/render/shadow_sampling.wgsl" target="_blank">source</a>
+            <a class="module" href="https://docs.rs/crate/bevy_pbr/0.19.0/source/src/render/shadow_sampling.wgsl" target="_blank">source</a>
             
 
             
 <pre class="code-block"><code>fn sample_shadow_cubemap_jittered(
     light_local: vec3&lt;f32&gt;, 
     depth: f32, 
+    frag_coord_xy: vec2&lt;f32&gt;, 
     scale: f32, 
     distance_to_light: f32, 
     light_id: u32, 
