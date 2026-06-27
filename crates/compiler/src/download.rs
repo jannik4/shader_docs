@@ -75,6 +75,7 @@ pub fn download_shaders(
                         };
 
                         let source = fix_bevy_14139(source, package);
+                        let source = fix_bevy_24714(source, package);
 
                         shaders.push(ShaderSource {
                             path,
@@ -205,4 +206,22 @@ fn fix_bevy_14139(source: String, package: &Package) -> String {
     } else {
         source
     }
+}
+
+// Fixes: https://github.com/bevyengine/bevy/pull/24714
+fn fix_bevy_24714(source: String, package: &Package) -> String {
+    if !(package.name == "bevy_pbr" && package.version == Version::new(0, 19, 0)) {
+        return source;
+    }
+
+    if !source.contains("#define_import_path bevy_pbr::irradiance_volume") {
+        return source;
+    }
+
+    source.replace(
+        "#import bevy_pbr::clustered_forward::ClusterableObjectIndexRanges",
+        "#import bevy_pbr::clustered_forward::ClusterableObjectIndexRanges\n#ifdef LIGHTMAP
+#import bevy_pbr::mesh_view_types::LIGHT_PROBE_FLAG_AFFECTS_LIGHTMAPPED_MESH_DIFFUSE;
+#endif",
+    )
 }

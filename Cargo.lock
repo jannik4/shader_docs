@@ -131,6 +131,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "bit-set"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "34ddef2995421ab6a5c779542c81ee77c115206f4ad9d5a8e05f4ff49716a3dd"
+dependencies = [
+ "bit-vec 0.9.1",
+]
+
+[[package]]
 name = "bit-vec"
 version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -141,6 +150,12 @@ name = "bit-vec"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7"
+
+[[package]]
+name = "bit-vec"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b71798fca2c1fe1086445a7258a4bc81e6e49dcd24c8d0dd9a1e57395b603f51"
 
 [[package]]
 name = "bitflags"
@@ -247,6 +262,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "codespan-reporting"
+version = "0.13.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af491d569909a7e4dee0ad7db7f5341fef5c614d5b8ec8cf765732aba3cff681"
+dependencies = [
+ "serde",
+ "termcolor",
+ "unicode-width",
+]
+
+[[package]]
 name = "compiler"
 version = "0.1.0"
 dependencies = [
@@ -262,6 +288,7 @@ dependencies = [
  "naga 24.0.0",
  "naga 26.0.0",
  "naga 27.0.3",
+ "naga 29.0.3",
  "naga_oil 0.10.1",
  "naga_oil 0.11.0",
  "naga_oil 0.13.0",
@@ -270,6 +297,7 @@ dependencies = [
  "naga_oil 0.17.0",
  "naga_oil 0.19.1",
  "naga_oil 0.20.0",
+ "naga_oil 0.22.0",
  "naga_oil 0.8.2",
  "regex",
  "reqwest",
@@ -968,6 +996,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "naga"
+version = "29.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0dd91265cc2454558f659b3b4b9640f0ddb8cc6521277f166b8a8c181c898079"
+dependencies = [
+ "arrayvec",
+ "bit-set 0.9.1",
+ "bitflags 2.9.0",
+ "cfg-if",
+ "cfg_aliases 0.2.1",
+ "codespan-reporting 0.13.1",
+ "half",
+ "hashbrown 0.16.1",
+ "hexf-parse",
+ "indexmap 2.13.0",
+ "libm",
+ "log",
+ "num-traits",
+ "once_cell",
+ "pp-rs",
+ "rustc-hash",
+ "thiserror 2.0.12",
+ "unicode-ident",
+]
+
+[[package]]
 name = "naga_oil"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1134,6 +1188,23 @@ dependencies = [
  "data-encoding",
  "indexmap 2.13.0",
  "naga 27.0.3",
+ "regex",
+ "rustc-hash",
+ "thiserror 2.0.12",
+ "tracing",
+ "unicode-ident",
+]
+
+[[package]]
+name = "naga_oil"
+version = "0.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "319f03062940ed85c03da020042618356bb8ca5263020322930883b05e30208e"
+dependencies = [
+ "codespan-reporting 0.12.0",
+ "data-encoding",
+ "indexmap 2.13.0",
+ "naga 29.0.3",
  "regex",
  "rustc-hash",
  "thiserror 2.0.12",

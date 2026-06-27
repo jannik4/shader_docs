@@ -59,6 +59,10 @@ pub enum AddressSpace {
     Storage { load: bool, store: bool },
     Handle,
     PushConstant,
+    Immediate,
+    TaskPayload,
+    RayPayload,
+    IncomingRayPayload,
 }
 
 impl fmt::Display for AddressSpace {
@@ -77,6 +81,10 @@ impl fmt::Display for AddressSpace {
             }
             AddressSpace::Handle => write!(f, ""),
             AddressSpace::PushConstant => write!(f, "<push_constant>"),
+            AddressSpace::Immediate => write!(f, "<immediate>"),
+            AddressSpace::TaskPayload => write!(f, "<task_payload>"),
+            AddressSpace::RayPayload => write!(f, "<ray_payload>"),
+            AddressSpace::IncomingRayPayload => write!(f, "<incoming_ray_payload>"),
         }
     }
 }
@@ -238,6 +246,29 @@ pub enum BuiltIn {
     SubgroupSize,
     SubgroupInvocationId,
     DrawID,
+    Barycentric { perspective: bool },
+    MeshTaskSize,
+    CullPrimitive,
+    PointIndex,
+    LineIndices,
+    TriangleIndices,
+    VertexCount,
+    Vertices,
+    PrimitiveCount,
+    Primitives,
+    RayInvocationId,
+    NumRayInvocations,
+    InstanceCustomData,
+    GeometryIndex,
+    WorldRayOrigin,
+    WorldRayDirection,
+    ObjectRayOrigin,
+    ObjectRayDirection,
+    RayTmin,
+    RayTCurrentMax,
+    ObjectToWorld,
+    WorldToObject,
+    HitKind,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -245,6 +276,7 @@ pub enum Interpolation {
     Perspective,
     Linear,
     Flat,
+    PerVertex,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]

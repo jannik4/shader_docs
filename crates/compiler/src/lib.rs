@@ -2,6 +2,9 @@ mod common;
 mod download;
 mod post_process;
 
+#[cfg(feature = "backend_v0_22")]
+mod backend_v0_22;
+
 #[cfg(feature = "backend_v0_20")]
 mod backend_v0_20;
 
@@ -35,6 +38,8 @@ use std::path::Path;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum CompilerBackend {
+    #[cfg(feature = "backend_v0_22")]
+    V0_22,
     #[cfg(feature = "backend_v0_20")]
     V0_20,
     #[cfg(feature = "backend_v0_19")]
@@ -58,6 +63,8 @@ pub enum CompilerBackend {
 impl CompilerBackend {
     fn naga_oil_minor(self) -> u64 {
         match self {
+            #[cfg(feature = "backend_v0_22")]
+            CompilerBackend::V0_22 => 22,
             #[cfg(feature = "backend_v0_20")]
             CompilerBackend::V0_20 => 20,
             #[cfg(feature = "backend_v0_19")]
@@ -98,6 +105,8 @@ pub fn compile(
 
     // CompileFn type is necessary to avoid compiler error if no backend is enabled
     let compile: CompileFn = match backend {
+        #[cfg(feature = "backend_v0_22")]
+        CompilerBackend::V0_22 => backend_v0_22::compile,
         #[cfg(feature = "backend_v0_20")]
         CompilerBackend::V0_20 => backend_v0_20::compile,
         #[cfg(feature = "backend_v0_19")]

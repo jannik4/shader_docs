@@ -436,14 +436,41 @@ fn builtin_str(built_in: &BuiltIn) -> Result<&'static str, Box<dyn std::error::E
         BuiltIn::SubgroupId => "subgroup_id",
         BuiltIn::SubgroupSize => "subgroup_size",
         BuiltIn::SubgroupInvocationId => "subgroup_invocation_id",
+        BuiltIn::DrawID => "draw_index",
+        BuiltIn::ClipDistance => "clip_distances",
         BuiltIn::BaseInstance
         | BuiltIn::BaseVertex
-        | BuiltIn::ClipDistance
         | BuiltIn::CullDistance
         | BuiltIn::PointSize
         | BuiltIn::PointCoord
-        | BuiltIn::WorkGroupSize
-        | BuiltIn::DrawID => return Err(format!("unsupported built-in: {:?}", built_in).into()),
+        | BuiltIn::WorkGroupSize => {
+            return Err(format!("unsupported built-in: {:?}", built_in).into())
+        }
+
+        BuiltIn::Barycentric { perspective: true } => "barycentric",
+        BuiltIn::Barycentric { perspective: false } => "barycentric_no_perspective",
+        BuiltIn::MeshTaskSize => "mesh_task_size",
+        BuiltIn::CullPrimitive => "cull_primitive",
+        BuiltIn::PointIndex => "point_index",
+        BuiltIn::LineIndices => "line_indices",
+        BuiltIn::TriangleIndices => "triangle_indices",
+        BuiltIn::VertexCount => "vertex_count",
+        BuiltIn::Vertices => "vertices",
+        BuiltIn::PrimitiveCount => "primitive_count",
+        BuiltIn::Primitives => "primitives",
+        BuiltIn::RayInvocationId => "ray_invocation_id",
+        BuiltIn::NumRayInvocations => "num_ray_invocations",
+        BuiltIn::InstanceCustomData => "instance_custom_data",
+        BuiltIn::GeometryIndex => "geometry_index",
+        BuiltIn::WorldRayOrigin => "world_ray_origin",
+        BuiltIn::WorldRayDirection => "world_ray_direction",
+        BuiltIn::ObjectRayOrigin => "object_ray_origin",
+        BuiltIn::ObjectRayDirection => "object_ray_direction",
+        BuiltIn::RayTmin => "ray_t_min",
+        BuiltIn::RayTCurrentMax => "ray_t_current_max",
+        BuiltIn::ObjectToWorld => "object_to_world",
+        BuiltIn::WorldToObject => "world_to_object",
+        BuiltIn::HitKind => "hit_kind",
     })
 }
 
@@ -452,6 +479,7 @@ const fn interpolation_str(interpolation: Interpolation) -> &'static str {
         Interpolation::Perspective => "perspective",
         Interpolation::Linear => "linear",
         Interpolation::Flat => "flat",
+        Interpolation::PerVertex => "per_vertex",
     }
 }
 
